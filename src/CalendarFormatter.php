@@ -46,6 +46,7 @@ class CalendarFormatter implements CalendarFormatterInterface
 
         $class = get_class($calendar);
         $formatter = $this->mapping[$class][$format];
+        return $formatter->format($calendar);
     }
 
 }
