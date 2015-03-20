@@ -6,8 +6,7 @@
  * Time: 14:07
  */
 
-namespace CultuurNet\CalendarSummary;
-
+namespace CultuurNet\CalendarSummary\Period;
 
 interface PeriodFomatterInterface {
 

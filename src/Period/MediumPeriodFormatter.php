@@ -6,7 +6,7 @@
  * Time: 14:16
  */
 
-namespace CultuurNet\CalendarSummary;
+namespace CultuurNet\CalendarSummary\Period;
 
 
 class MediumPeriodFormatter implements PeriodFomatterInterface {

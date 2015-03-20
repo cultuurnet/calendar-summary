@@ -6,10 +6,10 @@
  * Time: 14:18
  */
 
-namespace CultuurNet\CalendarSummary;
+namespace CultuurNet\CalendarSummary\Period;
 
-
-class ExtraSmallPeriodFormatter implements PeriodFomatterInterface {
+class ExtraSmallPeriodFormatter implements PeriodFomatterInterface
+{
 
     public function format(
       \CultureFeed_Cdb_Data_Calendar_Period $period

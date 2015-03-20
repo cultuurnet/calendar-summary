@@ -6,7 +6,7 @@
  * Time: 14:15
  */
 
-namespace CultuurNet\CalendarSummary;
+namespace CultuurNet\CalendarSummary\Period;
 
 
 class LargePeriodFormatter implements PeriodFomatterInterface {
