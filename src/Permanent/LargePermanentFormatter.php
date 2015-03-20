@@ -8,11 +8,11 @@
 
 namespace CultuurNet\CalendarSummary;
 
-
-class LargePermanentFormatter implements PermanentFormatterInterface {
+class LargePermanentFormatter implements PermanentFormatterInterface
+{
 
     public function format(
-      \CultureFeed_Cdb_Data_Calendar_Permanent $permanent
+        \CultureFeed_Cdb_Data_Calendar_Permanent $permanent
     ) {
         // Get opening info.
         // And group days with same openingtimes.
@@ -20,8 +20,8 @@ class LargePermanentFormatter implements PermanentFormatterInterface {
         $days = $weekscheme->getDays();
 
         foreach ($days as $day) {
-          $openingtimes = $day->getOpeningTimes();
-          // Every opening time has openFrom and openTill property.
+            $openingtimes = $day->getOpeningTimes();
+            // Every opening time has openFrom and openTill property.
         }
 
 
