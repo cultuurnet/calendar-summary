@@ -32,7 +32,7 @@ class LargePeriodFormatter implements PeriodFomatterInterface {
         $output .= '<ul class="list-unstyled">';
 
 
-        $weekscheme = $period->getWeekScheme();
+        /*$weekscheme = $period->getWeekScheme();
 
         // Repeat this for every openingtime.
         $output .= '<li>';
@@ -41,7 +41,7 @@ class LargePeriodFormatter implements PeriodFomatterInterface {
         $output .= '<span class="from meta">van</span>' . ;
         $output .= '<span class="to meta">tot</span>' . ;
         $output .= '</meta>';
-        $output .= '</li>';
+        $output .= '</li>';*/
 
         return $output;
     }
