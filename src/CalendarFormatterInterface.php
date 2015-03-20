@@ -8,8 +8,7 @@
 
 namespace CultuurNet\CalendarSummary;
 
-
-interface CalendarFormatterInterface {
-
-  public function format(\CultureFeed_Cdb_Data_Calendar $calendar, $format);
+interface CalendarFormatterInterface
+{
+    public function format(\CultureFeed_Cdb_Data_Calendar $calendar, $format);
 }
