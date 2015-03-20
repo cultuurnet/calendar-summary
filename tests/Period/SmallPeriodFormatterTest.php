@@ -25,8 +25,8 @@ class SmallPeriodFormatterTest extends \PHPUnit_Framework_TestCase
     public function testFormatsAPeriod()
     {
         $period = new CultureFeed_Cdb_Data_Calendar_Period(
-          '2015-03-20',
-          '2015-03-27'
+          '2020-03-20',
+          '2025-03-27'
         );
 
         $this->assertEquals(
@@ -38,8 +38,8 @@ class SmallPeriodFormatterTest extends \PHPUnit_Framework_TestCase
     public function testFormatsAPeriodDayWithoutLeadingZero()
     {
         $period = new CultureFeed_Cdb_Data_Calendar_Period(
-          '2015-03-01',
-          '2015-03-05'
+          '2020-03-01',
+          '2025-03-05'
         );
 
         $this->assertEquals(
