@@ -26,7 +26,7 @@ class ExtraSmallPeriofFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="date">20</span>/<span class="month">03</span>',
+            '<span class="cf-date">20</span>/<span class="cf-month">03</span>',
             $this->formatter->format($period)
         );
     }
