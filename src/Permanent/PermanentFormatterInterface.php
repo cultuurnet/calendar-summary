@@ -8,8 +8,8 @@
 
 namespace CultuurNet\CalendarSummary;
 
-
-interface PermanentFormatterInterface {
+interface PermanentFormatterInterface
+{
 
     /**
      * @param \CultureFeed_Cdb_Data_Calendar_Permanent $permanent
