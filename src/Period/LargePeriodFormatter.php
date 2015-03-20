@@ -8,11 +8,11 @@
 
 namespace CultuurNet\CalendarSummary\Period;
 
-
-class LargePeriodFormatter implements PeriodFomatterInterface {
+class LargePeriodFormatter implements PeriodFomatterInterface
+{
 
     public function format(
-      \CultureFeed_Cdb_Data_Calendar_Period $period
+        \CultureFeed_Cdb_Data_Calendar_Period $period
     ) {
         $dateFrom = $period->getDateFrom();
         $dateTo = $period->getDateTo();
