@@ -8,11 +8,10 @@
 
 namespace CultuurNet\CalendarSummary\Timestamps;
 
-
 class LargeTimestampsFormatter implements TimestampsFormatterInterface
 {
     public function format(
-      \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
+        \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
     ) {
 
         return '';

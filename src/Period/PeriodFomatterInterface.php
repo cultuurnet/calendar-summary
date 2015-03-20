@@ -16,5 +16,4 @@ interface PeriodFomatterInterface
      * @return string
      */
     public function format(\CultureFeed_Cdb_Data_Calendar_Period $period);
-
 }

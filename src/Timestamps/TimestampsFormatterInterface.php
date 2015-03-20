@@ -8,7 +8,6 @@
 
 namespace CultuurNet\CalendarSummary\Timestamps;
 
-
 interface TimestampsFormatterInterface
 {
 
@@ -17,7 +16,6 @@ interface TimestampsFormatterInterface
      * @return string
      */
     public function format(
-      \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
+        \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
     );
-
 }

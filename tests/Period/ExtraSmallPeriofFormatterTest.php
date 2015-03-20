@@ -14,7 +14,8 @@ class ExtraSmallPeriofFormatterTest extends \PHPUnit_Framework_TestCase
      */
     protected $formatter;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->formatter = new ExtraSmallPeriodFormatter();
     }
 
@@ -34,13 +35,13 @@ class ExtraSmallPeriofFormatterTest extends \PHPUnit_Framework_TestCase
     public function testFormatsAPeriodDayWithoutLeadingZero()
     {
         $period = new CultureFeed_Cdb_Data_Calendar_Period(
-          '2015-03-01',
-          '2015-03-05'
+            '2015-03-01',
+            '2015-03-05'
         );
 
         $this->assertEquals(
-          '<span class="cf-date">1</span>/<span class="cf-month">03</span>',
-          $this->formatter->format($period)
+            '<span class="cf-date">1</span>/<span class="cf-month">03</span>',
+            $this->formatter->format($period)
         );
     }
 }
