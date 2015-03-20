@@ -12,7 +12,7 @@ class ExtraSmallPeriodFormatter implements PeriodFomatterInterface
 {
 
     public function format(
-      \CultureFeed_Cdb_Data_Calendar_Period $period
+        \CultureFeed_Cdb_Data_Calendar_Period $period
     ) {
         $dateFrom = $period->getDateFrom();
 
