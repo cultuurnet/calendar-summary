@@ -8,7 +8,8 @@
 
 namespace CultuurNet\CalendarSummary\Period;
 
-interface PeriodFomatterInterface {
+interface PeriodFomatterInterface
+{
 
     /**
      * @param \CultureFeed_Cdb_Data_Calendar_Period $period
