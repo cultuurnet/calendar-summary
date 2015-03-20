@@ -8,7 +8,6 @@
 
 namespace CultuurNet\CalendarSummary;
 
-
 use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsFormatter;
 use CultuurNet\CalendarSummary\Timestamps\MediumTimestampsFormatter;
 
@@ -19,21 +18,21 @@ class CalendarFormatter implements CalendarFormatterInterface
     public function __construct()
     {
         $this->mapping = [
-          \CultureFeed_Cdb_Data_Calendar_TimestampList::class =>
+            \CultureFeed_Cdb_Data_Calendar_TimestampList::class =>
             [
-              'lg' => new LargeTimestampsFormatter(),
-              'md' => new MediumTimestampsFormatter(),
+                'lg' => new LargeTimestampsFormatter(),
+                'md' => new MediumTimestampsFormatter(),
             ],
-          \CultureFeed_Cdb_Data_Calendar_Period::class =>
+            \CultureFeed_Cdb_Data_Calendar_Period::class =>
             [
-              'lg' => new LargePeriodFormatter(),
-              'md' => new MediumPeriodFormatter(),
-              'sm' => new SmallPeriodFormatter(),
-              'xs' => new ExtraSmallPeriodFormatter(),
+                'lg' => new LargePeriodFormatter(),
+                'md' => new MediumPeriodFormatter(),
+                'sm' => new SmallPeriodFormatter(),
+                'xs' => new ExtraSmallPeriodFormatter(),
             ],
-          \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
+            \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [
-              'lg' => new LargePermanentFormatter(),
+                'lg' => new LargePermanentFormatter(),
             ],
         ];
     }
@@ -48,5 +47,4 @@ class CalendarFormatter implements CalendarFormatterInterface
         $formatter = $this->mapping[$class][$format];
         return $formatter->format($calendar);
     }
-
 }
