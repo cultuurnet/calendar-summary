@@ -22,7 +22,7 @@ class MediumPeriodFormatter implements PeriodFomatterInterface
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
             IntlDateFormatter::GREGORIAN,
-            'dd MMMM Y'
+            'd MMMM Y'
         );
         $dateFromString = $period->getDateFrom();
         $dateFrom = strtotime($dateFromString);

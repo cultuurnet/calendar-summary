@@ -35,16 +35,16 @@ class MediumPeriodFormatterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-//    public function testFormatsAPeriodDayWithoutLeadingZero()
-//    {
-//        $period = new CultureFeed_Cdb_Data_Calendar_Period(
-//            '2015-03-01',
-//            '2015-03-05'
-//        );
-//
-//        $this->assertEquals(
-//            '<span class="cf-date">1</span>/<span class="cf-month">03</span>',
-//            $this->formatter->format($period)
-//        );
-//    }
+    public function testFormatsAPeriodDayWithoutLeadingZero()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-01',
+            '2015-03-05'
+        );
+
+        $this->assertEquals(
+            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">1 maart 2015</span><span class="cf-to cf-meta">tot</span> <span class="cf-date">5 maart 2015</span>',
+            $this->formatter->format($period)
+        );
+    }
 }
