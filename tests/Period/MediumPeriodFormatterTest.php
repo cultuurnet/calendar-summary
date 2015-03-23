@@ -30,7 +30,7 @@ class MediumPeriodFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="from meta">Van</span> <span class="cf-date">20 March 2015</span><span class="to meta">tot</span> <span class="cf-date">27 March 2015</span>',
+            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">20 maart 2015</span><span class="cf-to cf-meta">tot</span> <span class="cf-date">27 maart 2015</span>',
             $this->formatter->format($period)
         );
     }

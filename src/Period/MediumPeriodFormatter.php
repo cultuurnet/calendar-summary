@@ -16,18 +16,24 @@ class MediumPeriodFormatter implements PeriodFomatterInterface
     public function format(
         \CultureFeed_Cdb_Data_Calendar_Period $period
     ) {
-        $dateFrom = $period->getDateFrom();
-        $dateFormatter = new IntlDateFormatter(
+        $fmt = new IntlDateFormatter(
             'nl_BE',
-            IntlDateFormatter::NONE,
-            IntlDateFormatter::NONE,
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
             date_default_timezone_get(),
             IntlDateFormatter::GREGORIAN,
-            'j F Y'
+            'dd MMMM Y'
         );
-        $intlDateFrom = $dateFormatter->format($dateFrom);
+        $dateFromString = $period->getDateFrom();
+        $dateFrom = strtotime($dateFromString);
+        $intlDateFrom =$fmt->format($dateFrom);
 
-        $output = '<span class="cf-date">' . $dateFrom . '</span>';
+        $dateToString = $period->getDateTo();
+        $dateTo = strtotime($dateToString);
+        $intlDateTo = $fmt->format($dateTo);
+
+        $output = '<span class="cf-from cf-meta">Van</span> <span class="cf-date">' . $intlDateFrom . '</span>';
+        $output .= '<span class="cf-to cf-meta">tot</span> <span class="cf-date">'. $intlDateTo . '</span>';
 
         return $output;
     }
