@@ -23,9 +23,9 @@ class MediumPeriodFormatter implements PeriodFomatterInterface
             IntlDateFormatter::NONE,
             date_default_timezone_get(),
             IntlDateFormatter::GREGORIAN,
-            'j F Y');
+            'j F Y'
+        );
         $intlDateFrom = $dateFormatter->format($dateFrom);
-
 
         $output = '<span class="cf-date">' . $dateFrom . '</span>';
 
