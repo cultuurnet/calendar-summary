@@ -19,7 +19,8 @@ class ExtraSmallPeriodFormatter implements PeriodFomatterInterface
         $dateFromDay = date('j', strtotime($dateFrom));
         $dateFromMonth = date('m', strtotime($dateFrom));
 
-        $output = '<span class="cf-date">' . $dateFromDay . '</span>/<span class="cf-month">' . $dateFromMonth . '</span>';
+        $output = '<span class="cf-date">' . $dateFromDay . '</span>/<span class="cf-month">'
+                  . $dateFromMonth . '</span>';
 
         return $output;
     }
