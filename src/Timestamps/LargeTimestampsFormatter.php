@@ -106,7 +106,6 @@ class LargeTimestampsFormatter implements TimestampsFormatterInterface
     public function formatMultipleTimestamps($timestampList, $timestamps_count)
     {
         $today = strtotime(date('Y-m-d') . ' 00:00:00');
-        $current_timestamp = 0;
 
         $output = '<ul class="list-unstyled">';
 
@@ -140,8 +139,6 @@ class LargeTimestampsFormatter implements TimestampsFormatterInterface
                 }
 
                 $output .= '</li>';
-
-                $current_timestamp++;
             }
 
             $timestampList->next();
