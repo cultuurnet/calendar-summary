@@ -134,7 +134,7 @@ class LargePeriodFormatter implements PeriodFomatterInterface
                     $previous->getOpenType()==$one_day->getOpenType() &&
                     $previous->getOpeningTimes()==$one_day->getOpeningTimes()) {
                     $one_day_dutch = $this->getDutchDay($one_day->getDayName());
-                    $previous_dutch =$this->getDutchDay($previous->getDayName());
+                    $previous_dutch = ucfirst($this->getDutchDay($previous->getDayName()));
                     $one_day_short= $this->mapping_short_days[$one_day->getDayName()];
                     $previous_short=$this->mapping_short_days[$previous->getDayName()];
                     if (strpos($output_week, '- ' . $previous_dutch . '</span>' !== false)) {
@@ -161,7 +161,7 @@ class LargePeriodFormatter implements PeriodFomatterInterface
                         );
                     }
                 } else {
-                    $one_day_dutch = $this->getDutchDay($one_day->getDayName());
+                    $one_day_dutch = ucfirst($this->getDutchDay($one_day->getDayName()));
                     //$output_week .= '<li>';
                     $output_week .= '<meta itemprop="openingHours" datetime="'
                         . $this->mapping_short_days[$one_day->getDayName()]
