@@ -13,10 +13,10 @@ use CultuurNet\CalendarSummary\Period\LargePeriodFormatter;
 use CultuurNet\CalendarSummary\Period\MediumPeriodFormatter;
 use CultuurNet\CalendarSummary\Period\SmallPeriodFormatter;
 use CultuurNet\CalendarSummary\Permanent\LargePermanentFormatter;
-use CultuurNet\CalendarSummary\Timestamps\ExtraSmallTimestampsFormatter;
-use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsFormatter;
-use CultuurNet\CalendarSummary\Timestamps\MediumTimestampsFormatter;
-use CultuurNet\CalendarSummary\Timestamps\SmallTimestampsFormatter;
+use CultuurNet\CalendarSummary\Timestamps\ExtraSmallTimestampsHTMLFormatter;
+use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsHTMLFormatter;
+use CultuurNet\CalendarSummary\Timestamps\MediumTimestampsHTMLFormatter;
+use CultuurNet\CalendarSummary\Timestamps\SmallTimestampsHTMLFormatter;
 
 class CalendarHTMLFormatter implements CalendarFormatterInterface
 {
@@ -27,10 +27,10 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
         $this->mapping = [
             \CultureFeed_Cdb_Data_Calendar_TimestampList::class =>
             [
-                'lg' => new LargeTimestampsFormatter(),
-                'md' => new MediumTimestampsFormatter(),
-                'sm' => new SmallTimestampsFormatter(),
-                'xs' => new ExtraSmallTimestampsFormatter(),
+                'lg' => new LargeTimestampsHTMLFormatter(),
+                'md' => new MediumTimestampsHTMLFormatter(),
+                'sm' => new SmallTimestampsHTMLFormatter(),
+                'xs' => new ExtraSmallTimestampsHTMLFormatter(),
             ],
             \CultureFeed_Cdb_Data_Calendar_Period::class =>
             [

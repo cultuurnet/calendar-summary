@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: jonas
  * Date: 26-3-15
- * Time: 16:34
+ * Time: 10:27
  */
 
 namespace CultuurNet\CalendarSummary\Timestamps;
@@ -11,17 +11,17 @@ namespace CultuurNet\CalendarSummary\Timestamps;
 use \CultureFeed_Cdb_Data_Calendar_TimestampList;
 use \CultureFeed_Cdb_Data_Calendar_Timestamp;
 
-class SmallTimestampsFormatterTest extends \PHPUnit_Framework_TestCase
+class ExtraSmallTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var SmallTimestampsFormatter
+     * @var ExtraSmallTimestampsHTMLFormatter
      */
     protected $formatter;
 
 
     public function setUp()
     {
-        $this->formatter = new SmallTimestampsFormatter();
+        $this->formatter = new ExtraSmallTimestampsHTMLFormatter();
     }
 
     public function testFormatsATimestamp()
@@ -66,7 +66,7 @@ class SmallTimestampsFormatterTest extends \PHPUnit_Framework_TestCase
 
         $this->setExpectedException(
             '\CultuurNet\CalendarSummary\FormatterException',
-            's format not supported for multiple timestamps.'
+            'xs format not supported for multiple timestamps.'
         );
         $this->formatter->format($timestamp_list);
     }

@@ -11,17 +11,17 @@ namespace CultuurNet\CalendarSummary\Timestamps;
 use \CultureFeed_Cdb_Data_Calendar_TimestampList;
 use \CultureFeed_Cdb_Data_Calendar_Timestamp;
 
-class LargeTimestampsFormatterTest extends \PHPUnit_Framework_TestCase
+class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var LargeTimestampsFormatter
+     * @var LargeTimestampsHTMLFormatter
      */
     protected $formatter;
 
 
     public function setUp()
     {
-        $this->formatter = new LargeTimestampsFormatter();
+        $this->formatter = new LargeTimestampsHTMLFormatter();
     }
 
     public function testFormatsATimestampWithStartTime()

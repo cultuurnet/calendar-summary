@@ -10,7 +10,7 @@ namespace CultuurNet\CalendarSummary\Timestamps;
 
 use IntlDateFormatter;
 
-class MediumTimestampsFormatter implements TimestampsFormatterInterface
+class MediumTimestampsHTMLFormatter implements TimestampsFormatterInterface
 {
     private $fmt;
 

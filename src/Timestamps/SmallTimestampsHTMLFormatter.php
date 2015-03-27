@@ -11,7 +11,7 @@ namespace CultuurNet\CalendarSummary\Timestamps;
 use CultuurNet\CalendarSummary\FormatterException;
 use IntlDateFormatter;
 
-class ExtraSmallTimestampsFormatter implements TimestampsFormatterInterface
+class SmallTimestampsHTMLFormatter implements TimestampsFormatterInterface
 {
     private $fmtDay;
 
