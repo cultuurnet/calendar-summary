@@ -8,10 +8,17 @@
 
 namespace CultuurNet\CalendarSummary;
 
+use CultuurNet\CalendarSummary\Period\ExtraSmallPeriodFormatter;
+use CultuurNet\CalendarSummary\Period\LargePeriodFormatter;
+use CultuurNet\CalendarSummary\Period\MediumPeriodFormatter;
+use CultuurNet\CalendarSummary\Period\SmallPeriodFormatter;
+use CultuurNet\CalendarSummary\Permanent\LargePermanentFormatter;
+use CultuurNet\CalendarSummary\Timestamps\ExtraSmallTimestampsFormatter;
 use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsFormatter;
 use CultuurNet\CalendarSummary\Timestamps\MediumTimestampsFormatter;
+use CultuurNet\CalendarSummary\Timestamps\SmallTimestampsFormatter;
 
-class CalendarFormatter implements CalendarFormatterInterface
+class CalendarHTMLFormatter implements CalendarFormatterInterface
 {
     protected $mapping = array();
 
@@ -22,6 +29,8 @@ class CalendarFormatter implements CalendarFormatterInterface
             [
                 'lg' => new LargeTimestampsFormatter(),
                 'md' => new MediumTimestampsFormatter(),
+                'sm' => new SmallTimestampsFormatter(),
+                'xs' => new ExtraSmallTimestampsFormatter(),
             ],
             \CultureFeed_Cdb_Data_Calendar_Period::class =>
             [
