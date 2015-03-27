@@ -30,7 +30,7 @@ class SmallPeriodFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="from meta">Vanaf</span> <span class="cf-date">20</span> <span class="cf-month">mar</span>',
+            '<span class="from meta">Vanaf</span> <span class="cf-date">20</span> <span class="cf-month">mrt</span>',
             $this->formatter->format($period)
         );
     }
@@ -43,7 +43,7 @@ class SmallPeriodFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="from meta">Vanaf</span> <span class="cf-date">1</span> <span class="cf-month">mar</span>',
+            '<span class="from meta">Vanaf</span> <span class="cf-date">1</span> <span class="cf-month">mrt</span>',
             $this->formatter->format($period)
         );
     }
@@ -56,7 +56,7 @@ class SmallPeriodFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="to meta">Tot</span> <span class="cf-date">25</span> <span class="cf-month">mar</span>',
+            '<span class="to meta">Tot</span> <span class="cf-date">25</span> <span class="cf-month">mrt</span>',
             $this->formatter->format($period)
         );
     }

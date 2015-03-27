@@ -11,9 +11,35 @@ namespace CultuurNet\CalendarSummary\Period;
 use \CultureFeed_Cdb_Data_Calendar_Period;
 use \DateTime;
 use \DateTimeInterface;
+use IntlDateFormatter;
 
 class SmallPeriodFormatter implements PeriodFomatterInterface
 {
+    private $fmtDay;
+
+    private $fmtMonth;
+
+    public function __construct()
+    {
+        $this->fmtDay = new IntlDateFormatter(
+            'nl_BE',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            date_default_timezone_get(),
+            IntlDateFormatter::GREGORIAN,
+            'd'
+        );
+
+        $this->fmtMonth = new IntlDateFormatter(
+            'nl_BE',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            date_default_timezone_get(),
+            IntlDateFormatter::GREGORIAN,
+            'MMM'
+        );
+    }
+
     public function format(CultureFeed_Cdb_Data_Calendar_Period $period)
     {
         $startDate = $this->dateFromString($period->getDateFrom());
@@ -66,8 +92,9 @@ class SmallPeriodFormatter implements PeriodFomatterInterface
      */
     private function formatDate(DateTimeInterface $date)
     {
-        $dateFromDay = $date->format('j');
-        $dateFromMonth = $date->format('M');
+        $dateFromDay = $this->fmtDay->format($date);
+        $dateFromMonth = $this->fmtMonth->format($date);
+        $dateFromMonth = rtrim($dateFromMonth, ".");
 
         $output =
             '<span class="cf-date">' . $dateFromDay . '</span> ' .
