@@ -8,12 +8,17 @@
 
 namespace CultuurNet\CalendarSummary\Timestamps;
 
+use IntlDateFormatter;
+
 class MediumTimestampsFormatter implements TimestampsFormatterInterface
 {
-    public function format(
-        \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
-    ) {
-        $fmt = new IntlDateFormatter(
+    private $fmt;
+
+    private $fmtDay;
+
+    public function __construct()
+    {
+        $this->fmt = new IntlDateFormatter(
             'nl_BE',
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
@@ -22,7 +27,7 @@ class MediumTimestampsFormatter implements TimestampsFormatterInterface
             'd MMMM Y'
         );
 
-        $fmt_day = new IntlDateFormatter(
+        $this->fmtDay = new IntlDateFormatter(
             'nl_BE',
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
@@ -30,31 +35,61 @@ class MediumTimestampsFormatter implements TimestampsFormatterInterface
             IntlDateFormatter::GREGORIAN,
             'eeee'
         );
+    }
 
-        if (sizeof($timestampList)==1) {
-            $timestamp = $timestampList->key();
-            $dateString = $timestamp->getDate();
+    public function format(
+        \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
+    ) {
+        $timestamps_count = iterator_count($timestampList);
+        $timestampList->rewind();
 
-            $date = strtotime($dateString);
-            $intlDate =$fmt->format($date);
-            $intlDateDay =$fmt_day->format($date);
+        if ($timestamps_count == 1) {
+            $timestamp = $timestampList->current();
+            return $this->formatSingleTimestamp($timestamp);
+        } else {
+            return $this->formatMultipleTimestamps($timestampList, $timestamps_count);
+        }
+    }
+
+    public function formatSingleTimestamp($timestamp)
+    {
+        $dateString = $timestamp->getDate();
+
+        $date = strtotime($dateString);
+        $intlDate = $this->fmt->format($date);
+        $intlDateDay = $this->fmtDay->format($date);
 
 
-            $output = '<span class="cf-weekday cf-meta">' . $intlDateDay .
-                      '</span> <span class="date">' . $intlDate . '</span>';
-            return $output;
-        } elseif (sizeof($timestampList) > 1) {
-            foreach ($timestampList as $timestamp) {
+        $output = '<span class="cf-weekday cf-meta">' . $intlDateDay . '</span>';
+        $output .= '<span class="cf-date">' . $intlDate . '</span>';
+
+        return $output;
+    }
+
+    public function formatMultipleTimestamps($timestampList, $timestamps_count)
+    {
+        $output = '';
+
+        for ($i = 0; $i < $timestamps_count; $i++) {
+            if ($i == 0 || $i == $timestamps_count-1) {
+                $timestamp = $timestampList->current();
                 $dateString = $timestamp->getDate();
 
                 $date = strtotime($dateString);
-                $intlDate =$fmt->format($date);
+                $intlDate =$this->fmt->format($date);
 
-                $output = '<span class="cf-weekday cf-meta">' . $intlDateDay .
-                          '</span> <span class="date">' . $intlDate . '</span>';
+                if ($i == 0) {
+                    $output .= '<span class="cf-from cf-meta">Van</span>';
+                }
+                $output .= '<span class="cf-date">' . $intlDate . '</span>';
+                if ($i == 0) {
+                    $output .= '<span class="cf-to cf-meta">tot</span>';
+                }
             }
 
-            return $output;
+            $timestampList->next();
         }
+
+        return $output;
     }
 }
