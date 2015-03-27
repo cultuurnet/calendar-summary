@@ -176,7 +176,9 @@ class LargePeriodFormatter implements PeriodFomatterInterface
                                 . '" class="cf-from cf-meta">van</span>';
                             $output_week .= $this->getFormattedTime($opening_time->getOpenFrom());
                             if (!is_null($opening_time->getOpenTill())) {
-                                $output_week .= '<span itemprop="closes" content="' . $this->getFormattedTime($opening_time->getOpenTill()) . '" class="cf-to cf-meta">tot</span>';
+                                $output_week .= '<span itemprop="closes" content="';
+                                $output_week .= $this->getFormattedTime($opening_time->getOpenTill());
+                                $output_week .= '" class="cf-to cf-meta">tot</span>';
                                 $output_week .= $this->getFormattedTime($opening_time->getOpenTill());
                             }
                         }

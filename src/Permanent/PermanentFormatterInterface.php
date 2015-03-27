@@ -6,7 +6,7 @@
  * Time: 13:52
  */
 
-namespace CultuurNet\CalendarSummary;
+namespace CultuurNet\CalendarSummary\Permanent;
 
 interface PermanentFormatterInterface
 {
