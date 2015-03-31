@@ -10,16 +10,16 @@ namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
 
-class SmallPeriodFormatterTest extends \PHPUnit_Framework_TestCase
+class SmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var SmallPeriodFormatter
+     * @var SmallPeriodHTMLFormatter
      */
     protected $formatter;
 
     public function setUp()
     {
-        $this->formatter = new SmallPeriodFormatter();
+        $this->formatter = new SmallPeriodHTMLFormatter();
     }
 
     public function testFormatsAPeriod()

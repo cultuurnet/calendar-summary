@@ -11,7 +11,7 @@ namespace CultuurNet\CalendarSummary\Period;
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 use IntlDateFormatter;
 
-class LargePeriodFormatter implements PeriodFomatterInterface
+class LargePeriodHTMLFormatter implements PeriodFormatterInterface
 {
 
     /**

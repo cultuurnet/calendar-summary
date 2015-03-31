@@ -10,7 +10,7 @@ namespace CultuurNet\CalendarSummary\Period;
 
 use IntlDateFormatter;
 
-class MediumPeriodFormatter implements PeriodFomatterInterface
+class MediumPeriodHTMLFormatter implements PeriodFormatterInterface
 {
 
     public function format(

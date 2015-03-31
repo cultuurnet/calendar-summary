@@ -8,7 +8,7 @@
 
 namespace CultuurNet\CalendarSummary\Period;
 
-interface PeriodFomatterInterface
+interface PeriodFormatterInterface
 {
 
     /**

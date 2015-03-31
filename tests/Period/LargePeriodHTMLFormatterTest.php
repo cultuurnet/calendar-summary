@@ -11,16 +11,16 @@ namespace CultuurNet\CalendarSummary\Period;
 use \CultureFeed_Cdb_Data_Calendar_Period;
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 
-class LargePeriodFormatterTest extends \PHPUnit_Framework_TestCase
+class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var LargePeriodFormatter
+     * @var LargePeriodHTMLFormatter
      */
     protected $formatter;
 
     public function setUp()
     {
-        $this->formatter = new LargePeriodFormatter();
+        $this->formatter = new LargePeriodHTMLFormatter();
     }
 
     public function testFormatsAPeriod()

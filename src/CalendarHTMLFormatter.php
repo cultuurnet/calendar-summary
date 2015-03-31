@@ -8,10 +8,10 @@
 
 namespace CultuurNet\CalendarSummary;
 
-use CultuurNet\CalendarSummary\Period\ExtraSmallPeriodFormatter;
-use CultuurNet\CalendarSummary\Period\LargePeriodFormatter;
-use CultuurNet\CalendarSummary\Period\MediumPeriodFormatter;
-use CultuurNet\CalendarSummary\Period\SmallPeriodFormatter;
+use CultuurNet\CalendarSummary\Period\ExtraSmallPeriodHTMLFormatter;
+use CultuurNet\CalendarSummary\Period\LargePeriodHTMLFormatter;
+use CultuurNet\CalendarSummary\Period\MediumPeriodHTMLFormatter;
+use CultuurNet\CalendarSummary\Period\SmallPeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Permanent\LargePermanentFormatter;
 use CultuurNet\CalendarSummary\Timestamps\ExtraSmallTimestampsHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsHTMLFormatter;
@@ -34,10 +34,10 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
             ],
             \CultureFeed_Cdb_Data_Calendar_Period::class =>
             [
-                'lg' => new LargePeriodFormatter(),
-                'md' => new MediumPeriodFormatter(),
-                'sm' => new SmallPeriodFormatter(),
-                'xs' => new ExtraSmallPeriodFormatter(),
+                'lg' => new LargePeriodHTMLFormatter(),
+                'md' => new MediumPeriodHTMLFormatter(),
+                'sm' => new SmallPeriodHTMLFormatter(),
+                'xs' => new ExtraSmallPeriodHTMLFormatter(),
             ],
             \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [

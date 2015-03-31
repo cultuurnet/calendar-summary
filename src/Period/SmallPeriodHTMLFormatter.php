@@ -13,7 +13,7 @@ use \DateTime;
 use \DateTimeInterface;
 use IntlDateFormatter;
 
-class SmallPeriodFormatter implements PeriodFomatterInterface
+class SmallPeriodHTMLFormatter implements PeriodFormatterInterface
 {
     private $fmtDay;
 

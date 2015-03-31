@@ -8,7 +8,7 @@
 
 namespace CultuurNet\CalendarSummary\Period;
 
-class ExtraSmallPeriodFormatter implements PeriodFomatterInterface
+class ExtraSmallPeriodHTMLFormatter implements PeriodFormatterInterface
 {
 
     public function format(

@@ -1,22 +1,25 @@
 <?php
 /**
- * @file
+ * Created by PhpStorm.
+ * User: jonas
+ * Date: 20-3-15
+ * Time: 15:58
  */
 
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
 
-class ExtraSmallPeriofFormatterTest extends \PHPUnit_Framework_TestCase
+class MediumPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var ExtraSmallPeriodFormatter
+     * @var MediumPeriodHTMLFormatter
      */
     protected $formatter;
 
     public function setUp()
     {
-        $this->formatter = new ExtraSmallPeriodFormatter();
+        $this->formatter = new MediumPeriodHTMLFormatter();
     }
 
     public function testFormatsAPeriod()
@@ -27,7 +30,8 @@ class ExtraSmallPeriofFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="cf-date">20</span>/<span class="cf-month">03</span>',
+            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">20 maart 2015</span>'
+            . '<span class="cf-to cf-meta">tot</span> <span class="cf-date">27 maart 2015</span>',
             $this->formatter->format($period)
         );
     }
@@ -40,7 +44,8 @@ class ExtraSmallPeriofFormatterTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '<span class="cf-date">1</span>/<span class="cf-month">03</span>',
+            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">1 maart 2015</span>'
+            . '<span class="cf-to cf-meta">tot</span> <span class="cf-date">5 maart 2015</span>',
             $this->formatter->format($period)
         );
     }
