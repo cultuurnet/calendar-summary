@@ -7,6 +7,7 @@
  */
 namespace CultuurNet\CalendarSummary;
 
+use CultureFeed_Cdb_Data_Calendar_Period;
 use CultureFeed_Cdb_Data_Calendar_Permanent;
 use CultureFeed_Cdb_Data_Calendar_Timestamp;
 use CultureFeed_Cdb_Data_Calendar_TimestampList;
@@ -223,5 +224,38 @@ class CalendarPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             $format . ' format not supported for CultureFeed_Cdb_Data_Calendar_Permanent'
         );
         $this->formatter->format($permanent, $format);
+    }
+
+    public function testFormatsAPeriodMedium()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-20',
+            '2015-03-27'
+        );
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $this->assertEquals(
+            'Van 20 maart 2015 tot 27 maart 2015',
+            $this->formatter->format($periodList, 'md')
+        );
+    }
+
+    public function testFormatsAPeriodWithUnexistingCustomFormat()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-20',
+            '2015-03-27'
+        );
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $format = 'cnet';
+
+        $this->setExpectedException(
+            '\CultuurNet\CalendarSummary\FormatterException',
+            $format . ' format not supported for CultureFeed_Cdb_Data_Calendar_PeriodList'
+        );
+        $this->formatter->format($periodList, $format);
     }
 }
