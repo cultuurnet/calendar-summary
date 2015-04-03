@@ -12,7 +12,7 @@ use CultuurNet\CalendarSummary\Period\ExtraSmallPeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Period\LargePeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Period\MediumPeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Period\SmallPeriodHTMLFormatter;
-use CultuurNet\CalendarSummary\Permanent\LargePermanentFormatter;
+use CultuurNet\CalendarSummary\Permanent\LargePermanentHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\ExtraSmallTimestampsHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\MediumTimestampsHTMLFormatter;
@@ -41,7 +41,7 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
             ],
             \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [
-                'lg' => new LargePermanentFormatter(),
+                'lg' => new LargePermanentHTMLFormatter(),
             ],
         ];
     }
