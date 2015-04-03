@@ -7,10 +7,11 @@
  */
 namespace CultuurNet\CalendarSummary;
 
-use CultureFeed_Cdb_Data_Calendar_Period;
-use CultureFeed_Cdb_Data_Calendar_Permanent;
-use CultureFeed_Cdb_Data_Calendar_Timestamp;
-use CultureFeed_Cdb_Data_Calendar_TimestampList;
+use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
+use \CultureFeed_Cdb_Data_Calendar_Permanent;
+use \CultureFeed_Cdb_Data_Calendar_Timestamp;
+use \CultureFeed_Cdb_Data_Calendar_TimestampList;
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 
 class CalendarPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
@@ -232,7 +233,7 @@ class CalendarPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-20',
             '2015-03-27'
         );
-        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
         $periodList->add($period);
 
         $this->assertEquals(
@@ -247,7 +248,7 @@ class CalendarPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-20',
             '2015-03-27'
         );
-        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
         $periodList->add($period);
 
         $format = 'cnet';
