@@ -13,8 +13,8 @@ use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 class LargePermanentPlainTextFormatter implements PermanentFormatterInterface
 {
     /**
-    * Translate the day in short Dutch.
-    */
+     * Translate the day in short Dutch.
+     */
     protected $mapping_days = array(
         'monday' => 'Ma',
         'tuesday' => 'Di',
@@ -32,36 +32,6 @@ class LargePermanentPlainTextFormatter implements PermanentFormatterInterface
         $output = $this->generateWeekscheme($permanent->getWeekScheme());
 
         return $output;
-    }
-
-
-    protected function generateWeekscheme($weekscheme)
-    {
-        $output_week = '';
-
-        $keys = array_keys($weekscheme->getDays());
-
-        for ($i = 0; $i <= 6; $i++) {
-            $one_day = $weekscheme->getDays()[$keys[$i]];
-            if (!is_null($one_day) && $one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN) {
-                $output_week .= $this->getDutchDay($one_day) . ' ';
-                foreach ($one_day->getOpeningTimes() as $opening_time) {
-                    $output_week .= 'Van ' . $this->getFormattedTime($opening_time->getOpenFrom());
-                    if (!is_null($opening_time->getOpenTill())) {
-                        $output_week .= ' tot ' . $this->getFormattedTime($opening_time->getOpenTill());
-                    }
-                    $output_week .= '\n';
-                }
-            } elseif (!is_null($one_day) && $one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_BY_APPOINTMENT) {
-                $output_week .= $this->getDutchDay($one_day) . ' ';
-                $output_week .= ' op afspraak\n';
-            } else {
-                $output_week .= $this->getDutchDay($one_day) . ' ';
-                $output_week .= ' gesloten\n';
-            }
-        }
-
-        return $output_week;
     }
 
     protected function getDutchDay($day)
@@ -103,5 +73,36 @@ class LargePermanentPlainTextFormatter implements PermanentFormatterInterface
         } else {
             return '-' . $this->getFormattedTime($end_time);
         }
+    }
+
+    protected function generateWeekscheme($weekscheme)
+    {
+        $output_week = '';
+
+        $keys = array_keys($weekscheme->getDays());
+
+        for ($i = 0; $i <= 6; $i++) {
+            $one_day = $weekscheme->getDays()[$keys[$i]];
+            if (!is_null($one_day)) {
+                if ($one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN) {
+                    $output_week .= $this->getDutchDay($keys[$i]) . ' ';
+                    foreach ($one_day->getOpeningTimes() as $opening_time) {
+                        $output_week .= 'Van ' . $this->getFormattedTime($opening_time->getOpenFrom());
+                        if (!is_null($opening_time->getOpenTill())) {
+                            $output_week .= ' tot ' . $this->getFormattedTime($opening_time->getOpenTill());
+                        }
+                        $output_week .= '\n';
+                    }
+                }
+            } elseif (!is_null($one_day) && $one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_BY_APPOINTMENT) {
+                $output_week .= $this->getDutchDay($keys[$i]) . ' ';
+                $output_week .= ' op afspraak\n';
+            } else {
+                $output_week .= $this->getDutchDay($keys[$i]) . ' ';
+                $output_week .= ' gesloten\n';
+            }
+        }
+
+        return $output_week;
     }
 }
