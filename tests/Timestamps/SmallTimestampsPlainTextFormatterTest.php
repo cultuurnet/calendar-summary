@@ -60,7 +60,7 @@ class SmallTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 
         $this->setExpectedException(
             '\CultuurNet\CalendarSummary\FormatterException',
-            's format not supported for multiple timestamps.'
+            'sm format not supported for multiple timestamps.'
         );
         $this->formatter->format($timestamp_list);
     }
