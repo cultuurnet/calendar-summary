@@ -2,31 +2,33 @@
 /**
  * Created by PhpStorm.
  * User: jonas
- * Date: 26-3-15
- * Time: 10:27
+ * Date: 24-3-15
+ * Time: 14:52
  */
 
-namespace CultuurNet\CalendarSummary\Permanent;
+namespace CultuurNet\CalendarSummary\Period;
 
-use \CultureFeed_Cdb_Data_Calendar_Permanent;
+use \CultureFeed_Cdb_Data_Calendar_Period;
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 
-class LargePermanentFormatterTest extends \PHPUnit_Framework_TestCase
+class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var LargePermanentFormatter
+     * @var LargePeriodPlainTextFormatter
      */
     protected $formatter;
 
     public function setUp()
     {
-        $this->formatter = new LargePermanentFormatter();
+        $this->formatter = new LargePeriodPlainTextFormatter();
     }
 
-    public function testFormatsAsPermanent()
+    public function testFormatsAPeriod()
     {
-        $permanent = new CultureFeed_Cdb_Data_Calendar_Permanent();
-
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-20',
+            '2015-03-27'
+        );
         $weekscheme=new \CultureFeed_Cdb_Data_Calendar_Weekscheme();
 
         $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::MONDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
@@ -70,26 +72,14 @@ class LargePermanentFormatterTest extends \PHPUnit_Framework_TestCase
         $weekscheme->setDay(SchemeDay::SATURDAY, $saturday);
 
 
-        $permanent->setWeekScheme($weekscheme);
+        $period->setWeekScheme($weekscheme);
 
         $this->assertEquals(
-            '<ul class="list-unstyled"><meta itemprop="openingHours" datetime="Mo-Tu 9:00-20:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Maandag - dinsdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
-            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
-            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li>'
-            . '<meta itemprop="openingHours" datetime="We 9:00-17:00"></meta><li itemprop="openingHoursSpecification">'
-            . '<span class="cf-days">Woensdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="17:00" class="cf-to cf-meta">tot</span>17:00</li>'
-            . '<meta itemprop="openingHours" datetime="Fr-Sa 9:00-20:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Vrijdag - zaterdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
-            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
-            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li></ul>',
-            $this->formatter->format($permanent)
+            'Van 20 maart 2015 tot 27 maart 2015\nMa Van 9:00 tot 13:00\nVan 17:00 tot 20:00\n'
+            . 'Di Van 9:00 tot 13:00\nVan 17:00 tot 20:00\nWo Van 9:00 tot 17:00\nDo  gesloten\n'
+            . 'Vr Van 9:00 tot 13:00\nVan 17:00 tot 20:00\nZa Van 9:00 tot 13:00\n'
+            . 'Van 17:00 tot 20:00\nZo  gesloten\n',
+            $this->formatter->format($period)
         );
     }
 }
