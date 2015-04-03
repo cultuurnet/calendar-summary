@@ -9,6 +9,7 @@
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 
 class SmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,7 +29,7 @@ class SmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '2020-03-20',
             '2025-03-27'
         );
-        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
         $periodList->add($period);
 
         $this->assertEquals(
@@ -43,7 +44,7 @@ class SmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '2020-03-01',
             '2025-03-05'
         );
-        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
         $periodList->add($period);
 
         $this->assertEquals(
@@ -58,7 +59,7 @@ class SmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-19',
             '2020-03-25'
         );
-        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
         $periodList->add($period);
 
         $this->assertEquals(
