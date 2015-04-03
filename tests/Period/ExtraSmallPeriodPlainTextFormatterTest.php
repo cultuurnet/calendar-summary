@@ -25,10 +25,12 @@ class ExtraSmallPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-20',
             '2015-03-27'
         );
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             '20/03',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 
@@ -38,10 +40,12 @@ class ExtraSmallPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-01',
             '2015-03-05'
         );
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             '1/03',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 }
