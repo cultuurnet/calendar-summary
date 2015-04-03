@@ -9,6 +9,7 @@
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 
 class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
@@ -74,7 +75,7 @@ class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 
         $period->setWeekScheme($weekscheme);
 
-        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
         $periodList->add($period);
 
         $this->assertEquals(
