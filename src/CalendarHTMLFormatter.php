@@ -32,7 +32,7 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
                 'sm' => new SmallTimestampsHTMLFormatter(),
                 'xs' => new ExtraSmallTimestampsHTMLFormatter(),
             ],
-            \CultureFeed_Cdb_Data_Calendar_Period::class =>
+            \CultureFeed_Cdb_Data_Calendar_PeriodList::class =>
             [
                 'lg' => new LargePeriodHTMLFormatter(),
                 'md' => new MediumPeriodHTMLFormatter(),

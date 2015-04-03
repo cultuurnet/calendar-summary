@@ -7,6 +7,7 @@
  */
 namespace CultuurNet\CalendarSummary;
 
+use CultureFeed_Cdb_Data_Calendar_Period;
 use CultureFeed_Cdb_Data_Calendar_Permanent;
 use CultureFeed_Cdb_Data_Calendar_Timestamp;
 use CultureFeed_Cdb_Data_Calendar_TimestampList;
@@ -81,18 +82,16 @@ class CalendarHTMLFormatterTest extends \PHPUnit_Framework_TestCase
     public function testFormatsATimestampWithSmallFormat()
     {
         $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
-        $timestamp1 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2015-09-20', '09:00:00', '12:30:00');
-        $timestamp2 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2015-09-21', '09:00:00', '12:30:00');
-        $timestamp3 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2015-09-22', '09:00:00', '12:30:00');
-        $timestamp_list->add($timestamp1);
-        $timestamp_list->add($timestamp2);
-        $timestamp_list->add($timestamp3);
+        $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2015-09-20', '09:00:00', '12:30:00');
+        $timestamp_list->add($timestamp);
 
-        $this->setExpectedException(
-            '\CultuurNet\CalendarSummary\FormatterException',
-            'sm format not supported for multiple timestamps.'
+        $output = '<span class="cf-date">20</span>';
+        $output .= '<span class="cf-month">sep</span>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list, 'sm')
         );
-        $this->formatter->format($timestamp_list, 'sm');
     }
 
     public function testFormatsPermanentWithUnexistingSmallFormat()
@@ -223,5 +222,39 @@ class CalendarHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             $format . ' format not supported for CultureFeed_Cdb_Data_Calendar_Permanent'
         );
         $this->formatter->format($permanent, $format);
+    }
+
+    public function testFormatsAPeriodMedium()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-20',
+            '2015-03-27'
+        );
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $this->assertEquals(
+            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">20 maart 2015</span>'
+            . '<span class="cf-to cf-meta">tot</span> <span class="cf-date">27 maart 2015</span>',
+            $this->formatter->format($periodList, 'md')
+        );
+    }
+
+    public function testFormatsAPeriodWithUnexistingCustomFormat()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-20',
+            '2015-03-27'
+        );
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $format = 'cnet';
+
+        $this->setExpectedException(
+            '\CultuurNet\CalendarSummary\FormatterException',
+            $format . ' format not supported for CultureFeed_Cdb_Data_Calendar_PeriodList'
+        );
+        $this->formatter->format($periodList, $format);
     }
 }
