@@ -57,7 +57,7 @@ class SmallTimestampsHTMLFormatter implements TimestampsFormatterInterface
 
             return $output;
         } else {
-            throw new FormatterException('xs format not supported for multiple timestamps.');
+            throw new FormatterException('sm format not supported for multiple timestamps.');
         }
     }
 }

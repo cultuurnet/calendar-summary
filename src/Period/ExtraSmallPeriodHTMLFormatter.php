@@ -12,8 +12,9 @@ class ExtraSmallPeriodHTMLFormatter implements PeriodFormatterInterface
 {
 
     public function format(
-        \CultureFeed_Cdb_Data_Calendar_Period $period
+        \CultureFeed_Cdb_Data_Calendar_PeriodList $periodList
     ) {
+        $period = $periodList->current();
         $dateFrom = $period->getDateFrom();
 
         $dateFromDay = date('j', strtotime($dateFrom));

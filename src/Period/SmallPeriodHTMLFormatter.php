@@ -40,8 +40,10 @@ class SmallPeriodHTMLFormatter implements PeriodFormatterInterface
         );
     }
 
-    public function format(CultureFeed_Cdb_Data_Calendar_Period $period)
-    {
+    public function format(
+        \CultureFeed_Cdb_Data_Calendar_PeriodList $periodList
+    ) {
+        $period = $periodList->current();
         $startDate = $this->dateFromString($period->getDateFrom());
         $startDate->setTime(0, 0, 1);
 

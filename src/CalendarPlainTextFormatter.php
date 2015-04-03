@@ -32,7 +32,7 @@ class CalendarPlainTextFormatter implements CalendarFormatterInterface
                 'sm' => new SmallTimestampsPlainTextFormatter(),
                 'xs' => new ExtraSmallTimestampsPlainTextFormatter(),
             ],
-            \CultureFeed_Cdb_Data_Calendar_Period::class =>
+            \CultureFeed_Cdb_Data_Calendar_PeriodList::class =>
             [
                 'lg' => new LargePeriodPlainTextFormatter(),
                 'md' => new MediumPeriodPlainTextFormatter(),
@@ -48,12 +48,14 @@ class CalendarPlainTextFormatter implements CalendarFormatterInterface
 
     public function format(\CultureFeed_Cdb_Data_Calendar $calendar, $format)
     {
-        // TODO: Implement format() method.
-        // Check which kind of Calendar we get in (Calendar is abstract class).
-        // Then use the mapping to do the correct formatting.
-
         $class = get_class($calendar);
-        $formatter = $this->mapping[$class][$format];
+
+        if (isset($this->mapping[$class][$format])) {
+            $formatter = $this->mapping[$class][$format];
+        } else {
+            throw new FormatterException($format . ' format not supported for ' . $class);
+        }
+
         return $formatter->format($calendar);
     }
 }

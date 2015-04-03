@@ -9,6 +9,7 @@
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 
 class MediumPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,11 +29,13 @@ class MediumPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-20',
             '2015-03-27'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             '<span class="cf-from cf-meta">Van</span> <span class="cf-date">20 maart 2015</span>'
             . '<span class="cf-to cf-meta">tot</span> <span class="cf-date">27 maart 2015</span>',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 
@@ -42,11 +45,13 @@ class MediumPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-01',
             '2015-03-05'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             '<span class="cf-from cf-meta">Van</span> <span class="cf-date">1 maart 2015</span>'
             . '<span class="cf-to cf-meta">tot</span> <span class="cf-date">5 maart 2015</span>',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 }

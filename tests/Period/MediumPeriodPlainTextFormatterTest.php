@@ -9,6 +9,7 @@
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 
 class MediumPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,10 +29,12 @@ class MediumPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-20',
             '2015-03-27'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             'Van 20 maart 2015 tot 27 maart 2015',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 
@@ -41,10 +44,12 @@ class MediumPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-01',
             '2015-03-05'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             'Van 1 maart 2015 tot 5 maart 2015',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 }

@@ -9,6 +9,7 @@
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 
 class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
@@ -74,12 +75,15 @@ class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 
         $period->setWeekScheme($weekscheme);
 
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
         $this->assertEquals(
             'Van 20 maart 2015 tot 27 maart 2015\nMa Van 9:00 tot 13:00\nVan 17:00 tot 20:00\n'
             . 'Di Van 9:00 tot 13:00\nVan 17:00 tot 20:00\nWo Van 9:00 tot 17:00\nDo  gesloten\n'
             . 'Vr Van 9:00 tot 13:00\nVan 17:00 tot 20:00\nZa Van 9:00 tot 13:00\n'
             . 'Van 17:00 tot 20:00\nZo  gesloten\n',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 }

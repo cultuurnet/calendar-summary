@@ -38,8 +38,9 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
     );
 
     public function format(
-        \CultureFeed_Cdb_Data_Calendar_Period $period
+        \CultureFeed_Cdb_Data_Calendar_PeriodList $periodList
     ) {
+        $period = $periodList->current();
         $output = $this->generateDates($period->getDateFrom(), $period->getDateTo());
         $output .= $this->generateWeekscheme($period->getWeekScheme());
 

@@ -12,8 +12,8 @@ interface PeriodFormatterInterface
 {
 
     /**
-     * @param \CultureFeed_Cdb_Data_Calendar_Period $period
+     * @param \CultureFeed_Cdb_Data_Calendar_PeriodList $period
      * @return string
      */
-    public function format(\CultureFeed_Cdb_Data_Calendar_Period $period);
+    public function format(\CultureFeed_Cdb_Data_Calendar_PeriodList $period);
 }

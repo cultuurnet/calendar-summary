@@ -12,7 +12,7 @@ use CultuurNet\CalendarSummary\Period\ExtraSmallPeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Period\LargePeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Period\MediumPeriodHTMLFormatter;
 use CultuurNet\CalendarSummary\Period\SmallPeriodHTMLFormatter;
-use CultuurNet\CalendarSummary\Permanent\LargePermanentFormatter;
+use CultuurNet\CalendarSummary\Permanent\LargePermanentHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\ExtraSmallTimestampsHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\LargeTimestampsHTMLFormatter;
 use CultuurNet\CalendarSummary\Timestamps\MediumTimestampsHTMLFormatter;
@@ -32,7 +32,7 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
                 'sm' => new SmallTimestampsHTMLFormatter(),
                 'xs' => new ExtraSmallTimestampsHTMLFormatter(),
             ],
-            \CultureFeed_Cdb_Data_Calendar_Period::class =>
+            \CultureFeed_Cdb_Data_Calendar_PeriodList::class =>
             [
                 'lg' => new LargePeriodHTMLFormatter(),
                 'md' => new MediumPeriodHTMLFormatter(),
@@ -41,19 +41,21 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
             ],
             \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [
-                'lg' => new LargePermanentFormatter(),
+                'lg' => new LargePermanentHTMLFormatter(),
             ],
         ];
     }
 
     public function format(\CultureFeed_Cdb_Data_Calendar $calendar, $format)
     {
-        // TODO: Implement format() method.
-        // Check which kind of Calendar we get in (Calendar is abstract class).
-        // Then use the mapping to do the correct formatting.
-
         $class = get_class($calendar);
-        $formatter = $this->mapping[$class][$format];
+
+        if (isset($this->mapping[$class][$format])) {
+            $formatter = $this->mapping[$class][$format];
+        } else {
+            throw new FormatterException($format . ' format not supported for ' . $class);
+        }
+
         return $formatter->format($calendar);
     }
 }
