@@ -32,7 +32,7 @@ class CalendarPlainTextFormatter implements CalendarFormatterInterface
                 'sm' => new SmallTimestampsPlainTextFormatter(),
                 'xs' => new ExtraSmallTimestampsPlainTextFormatter(),
             ],
-            \CultureFeed_Cdb_Data_Calendar_Period::class =>
+            \CultureFeed_Cdb_Data_Calendar_PeriodList::class =>
             [
                 'lg' => new LargePeriodPlainTextFormatter(),
                 'md' => new MediumPeriodPlainTextFormatter(),
