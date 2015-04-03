@@ -9,6 +9,7 @@
 namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 
 class SmallPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,10 +29,12 @@ class SmallPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2020-03-20',
             '2025-03-27'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             'Vanaf 20 mrt',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 
@@ -41,10 +44,12 @@ class SmallPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2020-03-01',
             '2025-03-05'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             'Vanaf 1 mrt',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 
@@ -54,10 +59,12 @@ class SmallPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-19',
             '2020-03-25'
         );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
 
         $this->assertEquals(
             'Tot 25 mrt',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 }
