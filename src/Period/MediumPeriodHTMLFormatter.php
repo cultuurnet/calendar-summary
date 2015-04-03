@@ -14,7 +14,7 @@ class MediumPeriodHTMLFormatter implements PeriodFormatterInterface
 {
 
     public function format(
-        \CultureFeed_Cdb_Data_Calendar_Period $period
+        \CultureFeed_Cdb_Data_Calendar_PeriodList $periodList
     ) {
         $fmt = new IntlDateFormatter(
             'nl_BE',
@@ -24,6 +24,8 @@ class MediumPeriodHTMLFormatter implements PeriodFormatterInterface
             IntlDateFormatter::GREGORIAN,
             'd MMMM Y'
         );
+
+        $period = $periodList->current();
         $dateFromString = $period->getDateFrom();
         $dateFrom = strtotime($dateFromString);
         $intlDateFrom =$fmt->format($dateFrom);

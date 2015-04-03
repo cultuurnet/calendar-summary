@@ -29,6 +29,7 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '2015-03-20',
             '2015-03-27'
         );
+
         $weekscheme=new \CultureFeed_Cdb_Data_Calendar_Weekscheme();
 
         $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::MONDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
@@ -74,6 +75,9 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
         $period->setWeekScheme($weekscheme);
 
+        $periodList = new \CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
         $this->assertEquals(
             '<p><time itemprop="startDate" datetime="2015-03-20"><span class="cf-date">20 maart 2015</span></time>'
             . '<span class="cf-to cf-meta">tot</span><time itemprop="endDate" datetime="2015-03-27">'
@@ -94,7 +98,7 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
             . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
             . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li></ul>',
-            $this->formatter->format($period)
+            $this->formatter->format($periodList)
         );
     }
 }
