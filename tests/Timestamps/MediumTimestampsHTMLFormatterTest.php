@@ -31,6 +31,7 @@ class MediumTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp);
 
         $output = '<span class="cf-weekday cf-meta">zondag</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">20 september 2020</span>';
 
         $this->assertEquals(
@@ -46,6 +47,7 @@ class MediumTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp);
 
         $output = '<span class="cf-weekday cf-meta">woensdag</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">9 september 2020</span>';
 
         $this->assertEquals(
@@ -65,8 +67,11 @@ class MediumTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp3);
 
         $output = '<span class="cf-from cf-meta">Van</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">20 september 2020</span>';
+        $output .= ' ';
         $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">22 september 2020</span>';
 
         $this->assertEquals(
@@ -86,8 +91,11 @@ class MediumTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp3);
 
         $output = '<span class="cf-from cf-meta">Van</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">7 september 2020</span>';
+        $output .= ' ';
         $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">9 september 2020</span>';
 
         $this->assertEquals(

@@ -53,6 +53,7 @@ class ExtraSmallTimestampsHTMLFormatter implements TimestampsFormatterInterface
             $dateFromMonth = rtrim($dateFromMonth, ".");
 
             $output = '<span class="cf-date">' . $dateFromDay . '</span>';
+            $output .= ' ';
             $output .= '<span class="cf-month">' . $dateFromMonth . '</span>';
 
             return $output;

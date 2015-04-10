@@ -61,6 +61,7 @@ class MediumTimestampsHTMLFormatter implements TimestampsFormatterInterface
 
 
         $output = '<span class="cf-weekday cf-meta">' . $intlDateDay . '</span>';
+        $output .= ' ';
         $output .= '<span class="cf-date">' . $intlDate . '</span>';
 
         return $output;
@@ -76,14 +77,17 @@ class MediumTimestampsHTMLFormatter implements TimestampsFormatterInterface
                 $dateString = $timestamp->getDate();
 
                 $date = strtotime($dateString);
-                $intlDate =$this->fmt->format($date);
+                $intlDate = $this->fmt->format($date);
 
                 if ($i == 0) {
                     $output .= '<span class="cf-from cf-meta">Van</span>';
+                    $output .= ' ';
                 }
                 $output .= '<span class="cf-date">' . $intlDate . '</span>';
                 if ($i == 0) {
+                    $output .= ' ';
                     $output .= '<span class="cf-to cf-meta">tot</span>';
+                    $output .= ' ';
                 }
             }
 
