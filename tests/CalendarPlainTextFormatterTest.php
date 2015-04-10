@@ -80,7 +80,7 @@ class CalendarPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $this->formatter->format($timestamp_list, $format);
     }
 
-    public function testFormatsATimestampWithSmallFormat()
+    public function testFormatsMultipleTimestampsWithSmallFormat()
     {
         $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
         $timestamp1 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2015-09-20', '09:00:00', '12:30:00');
@@ -95,6 +95,18 @@ class CalendarPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             'sm format not supported for multiple timestamps.'
         );
         $this->formatter->format($timestamp_list, 'sm');
+    }
+
+    public function testFormatsATimestampWithMediumFormat()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00');
+        $timestamp_list->add($timestamp);
+
+        $this->assertEquals(
+            'zondag 20 september 2020',
+            $this->formatter->format($timestamp_list, 'md')
+        );
     }
 
     public function testFormatsPermanentWithUnexistingSmallFormat()
