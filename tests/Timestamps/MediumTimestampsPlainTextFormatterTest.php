@@ -58,7 +58,7 @@ class MediumTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'Van 20 september 2020\n';
+        $output = 'Van 20 september 2020' .PHP_EOL;
         $output .= 'tot 22 september 2020';
 
         $this->assertEquals(
@@ -77,7 +77,7 @@ class MediumTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'Van 7 september 2020\n';
+        $output = 'Van 7 september 2020' . PHP_EOL;
         $output .= 'tot 9 september 2020';
 
         $this->assertEquals(

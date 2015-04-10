@@ -83,7 +83,7 @@ class LargeTimestampsPlainTextFormatter
         $endTime = $timestamp->getEndTime();
         $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
-        $output = $intlWeekDay . ' ' . $intlDate . '\n';
+        $output = $intlWeekDay . ' ' . $intlDate . PHP_EOL;
         if (!empty($endTime)) {
             $output .= 'van ';
         } else {
@@ -113,7 +113,7 @@ class LargeTimestampsPlainTextFormatter
             $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
             if (strtotime($date) >= $today) {
-                $output .= $intlWeekDay . ' ' . $intlDate . '\n';
+                $output .= $intlWeekDay . ' ' . $intlDate . PHP_EOL;
                 if (!empty($endTime)) {
                     $output .= 'van ';
                 } else {
@@ -124,7 +124,7 @@ class LargeTimestampsPlainTextFormatter
                     $output .= ' tot ' . $intlEndTime;
                 }
                 if ($i != $timestamps_count-1) {
-                    $output .= '\n';
+                    $output .= PHP_EOL;
                 }
             }
 
