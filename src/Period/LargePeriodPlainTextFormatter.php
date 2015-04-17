@@ -33,7 +33,9 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
     ) {
         $period = $periodList->current();
         $output = $this->generateDates($period->getDateFrom(), $period->getDateTo());
-        $output .= $this->generateWeekscheme($period->getWeekScheme());
+        if (!is_null($period->getWeekScheme())) {
+            $output .= $this->generateWeekscheme($period->getWeekScheme());
+        }
 
         return $output;
     }
@@ -97,7 +99,7 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
         $dateTo = strtotime($dateToString);
         $intlDateTo = $fmt->format($dateTo);
 
-        $output_dates = 'Van ' . $intlDateFrom . ' tot ' . $intlDateTo . '\n';
+        $output_dates = 'Van ' . $intlDateFrom . ' tot ' . $intlDateTo . PHP_EOL;
         return $output_dates;
     }
 
@@ -117,15 +119,15 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
                         if (!is_null($opening_time->getOpenTill())) {
                             $output_week .= ' tot ' . $this->getFormattedTime($opening_time->getOpenTill());
                         }
-                        $output_week .= '\n';
+                        $output_week .= PHP_EOL;
                     }
                 }
             } elseif (!is_null($one_day) && $one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_BY_APPOINTMENT) {
                 $output_week .= $this->getDutchDay($keys[$i]) . ' ';
-                $output_week .= ' op afspraak\n';
+                $output_week .= ' op afspraak' . PHP_EOL;
             } else {
                 $output_week .= $this->getDutchDay($keys[$i]) . ' ';
-                $output_week .= ' gesloten\n';
+                $output_week .= ' gesloten' . PHP_EOL;
             }
         }
 

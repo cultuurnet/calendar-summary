@@ -29,7 +29,10 @@ class LargePermanentPlainTextFormatter implements PermanentFormatterInterface
     public function format(
         \CultureFeed_Cdb_Data_Calendar_Permanent $permanent
     ) {
-        $output = $this->generateWeekscheme($permanent->getWeekScheme());
+        $output = '';
+        if (!is_null($permanent->getWeekScheme())) {
+            $output .= $this->generateWeekscheme($permanent->getWeekScheme());
+        }
 
         return $output;
     }
@@ -91,15 +94,15 @@ class LargePermanentPlainTextFormatter implements PermanentFormatterInterface
                         if (!is_null($opening_time->getOpenTill())) {
                             $output_week .= ' tot ' . $this->getFormattedTime($opening_time->getOpenTill());
                         }
-                        $output_week .= '\n';
+                        $output_week .= PHP_EOL;
                     }
                 }
             } elseif (!is_null($one_day) && $one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_BY_APPOINTMENT) {
                 $output_week .= $this->getDutchDay($keys[$i]) . ' ';
-                $output_week .= ' op afspraak\n';
+                $output_week .= ' op afspraak' . PHP_EOL;
             } else {
                 $output_week .= $this->getDutchDay($keys[$i]) . ' ';
-                $output_week .= ' gesloten\n';
+                $output_week .= ' gesloten' . PHP_EOL;
             }
         }
 

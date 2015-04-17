@@ -8,10 +8,10 @@
 
 namespace CultuurNet\CalendarSummary\Period;
 
-use \CultureFeed_Cdb_Data_Calendar_Period;
+use \CultureFeed_Cdb_Data_Calendar_PeriodList;
 use \DateTime;
 use \DateTimeInterface;
-use IntlDateFormatter;
+use \IntlDateFormatter;
 
 class SmallPeriodHTMLFormatter implements PeriodFormatterInterface
 {

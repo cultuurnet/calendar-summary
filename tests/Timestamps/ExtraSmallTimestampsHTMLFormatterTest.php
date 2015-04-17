@@ -31,6 +31,7 @@ class ExtraSmallTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp);
 
         $output = '<span class="cf-date">20</span>';
+        $output .= ' ';
         $output .= '<span class="cf-month">sep</span>';
 
         $this->assertEquals(
@@ -46,6 +47,7 @@ class ExtraSmallTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp);
 
         $output = '<span class="cf-date">9</span>';
+        $output .= ' ';
         $output .= '<span class="cf-month">sep</span>';
 
         $this->assertEquals(

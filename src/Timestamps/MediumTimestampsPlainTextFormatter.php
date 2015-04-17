@@ -82,7 +82,7 @@ class MediumTimestampsPlainTextFormatter
                 }
                 $output .= $intlDate;
                 if ($i == 0) {
-                    $output .= '\ntot ';
+                    $output .= PHP_EOL . 'tot ';
                 }
             }
 

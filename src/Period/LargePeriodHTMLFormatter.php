@@ -42,7 +42,9 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
     ) {
         $period = $periodList->current();
         $output = $this->generateDates($period->getDateFrom(), $period->getDateTo());
-        $output .= $this->generateWeekscheme($period->getWeekScheme());
+        if (!is_null($period->getWeekScheme())) {
+            $output .= $this->generateWeekscheme($period->getWeekScheme());
+        }
 
         return $output;
     }

@@ -38,7 +38,10 @@ class LargePermanentHTMLFormatter implements PermanentFormatterInterface
     public function format(
         \CultureFeed_Cdb_Data_Calendar_Permanent $permanent
     ) {
-        $output = $this->generateWeekscheme($permanent->getWeekScheme());
+        $output = '';
+        if (!is_null($permanent->getWeekScheme())) {
+            $output .= $this->generateWeekscheme($permanent->getWeekScheme());
+        }
 
         return $output;
     }

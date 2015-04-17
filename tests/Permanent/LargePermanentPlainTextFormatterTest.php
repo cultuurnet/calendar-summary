@@ -80,8 +80,9 @@ class LargePermanentPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $permanent->setWeekScheme($weekscheme);
 
         $this->assertEquals(
-            'Ma Van 9:00 tot 13:00\nDi Van 9:00 tot 13:00\nWo Van 9:00 tot 13:00\n'
-            . 'Do  gesloten\nVr Van 9:00 tot 13:00\nZa Van 9:00 tot 19:00\nZo Van 9:00 tot 19:00\n',
+            'Ma Van 9:00 tot 13:00'. PHP_EOL . 'Di Van 9:00 tot 13:00'. PHP_EOL . 'Wo Van 9:00 tot 13:00' . PHP_EOL
+            . 'Do  gesloten'. PHP_EOL . 'Vr Van 9:00 tot 13:00'. PHP_EOL . 'Za Van 9:00 tot 19:00'
+            . PHP_EOL . 'Zo Van 9:00 tot 19:00' . PHP_EOL,
             $this->formatter->format($permanent)
         );
     }
@@ -136,9 +137,12 @@ class LargePermanentPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $permanent->setWeekScheme($weekscheme);
 
         $this->assertEquals(
-            'Ma Van 9:00 tot 13:00\nVan 17:00 tot 20:00\nDi Van 9:00 tot 13:00\n'
-            . 'Van 17:00 tot 20:00\nWo Van 9:00 tot 17:00\nDo  gesloten\nVr Van 9:00 tot 13:00\n'
-            . 'Van 17:00 tot 20:00\nZa Van 9:00 tot 13:00\nVan 17:00 tot 20:00\nZo  gesloten\n',
+            'Ma Van 9:00 tot 13:00'. PHP_EOL . 'Van 17:00 tot 20:00'. PHP_EOL
+            . 'Di Van 9:00 tot 13:00' . PHP_EOL . 'Van 17:00 tot 20:00'. PHP_EOL
+            . 'Wo Van 9:00 tot 17:00'. PHP_EOL . 'Do  gesloten'. PHP_EOL
+            . 'Vr Van 9:00 tot 13:00' . PHP_EOL . 'Van 17:00 tot 20:00'. PHP_EOL
+            . 'Za Van 9:00 tot 13:00'. PHP_EOL . 'Van 17:00 tot 20:00'. PHP_EOL
+            . 'Zo  gesloten' . PHP_EOL,
             $this->formatter->format($permanent)
         );
     }

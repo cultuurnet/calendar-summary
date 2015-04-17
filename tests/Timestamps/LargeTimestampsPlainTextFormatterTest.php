@@ -30,7 +30,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00');
         $timestamp_list->add($timestamp);
 
-        $output = 'zondag 20 september 2020\n';
+        $output = 'zondag 20 september 2020' . PHP_EOL;
         $output .= 'om 09:00';
 
         $this->assertEquals(
@@ -45,7 +45,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-09', '09:00:00');
         $timestamp_list->add($timestamp);
 
-        $output = 'woensdag 9 september 2020\n';
+        $output = 'woensdag 9 september 2020' . PHP_EOL;
         $output .= 'om 09:00';
 
         $this->assertEquals(
@@ -60,7 +60,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00', '12:30:00');
         $timestamp_list->add($timestamp);
 
-        $output = 'zondag 20 september 2020\n';
+        $output = 'zondag 20 september 2020' . PHP_EOL;
         $output .= 'van 09:00 tot 12:30';
 
         $this->assertEquals(
@@ -79,11 +79,11 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'zo 20 september 2020\n';
-        $output .= 'om 09:00\n';
-        $output .= 'ma 21 september 2020\n';
-        $output .= 'om 10:00\n';
-        $output .= 'di 22 september 2020\n';
+        $output = 'zo 20 september 2020' . PHP_EOL;
+        $output .= 'om 09:00' . PHP_EOL;
+        $output .= 'ma 21 september 2020' . PHP_EOL;
+        $output .= 'om 10:00' . PHP_EOL;
+        $output .= 'di 22 september 2020' . PHP_EOL;
         $output .= 'om 09:00';
 
         $this->assertEquals(
@@ -102,11 +102,11 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'zo 20 september 2020\n';
-        $output .= 'van 09:00 tot 17:00\n';
-        $output .= 'ma 21 september 2020\n';
-        $output .= 'van 10:00 tot 18:00\n';
-        $output .= 'di 22 september 2020\n';
+        $output = 'zo 20 september 2020' . PHP_EOL;
+        $output .= 'van 09:00 tot 17:00' . PHP_EOL;
+        $output .= 'ma 21 september 2020' . PHP_EOL;
+        $output .= 'van 10:00 tot 18:00' . PHP_EOL;
+        $output .= 'di 22 september 2020' . PHP_EOL;
         $output .= 'van 09:00 tot 17:00';
 
         $this->assertEquals(
@@ -125,11 +125,11 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'zo 20 september 2020\n';
-        $output .= 'om 09:00\n';
-        $output .= 'ma 21 september 2020\n';
-        $output .= 'van 10:00 tot 18:00\n';
-        $output .= 'di 22 september 2020\n';
+        $output = 'zo 20 september 2020' . PHP_EOL;
+        $output .= 'om 09:00' . PHP_EOL;
+        $output .= 'ma 21 september 2020' . PHP_EOL;
+        $output .= 'van 10:00 tot 18:00' . PHP_EOL;
+        $output .= 'di 22 september 2020' . PHP_EOL;
         $output .= 'van 09:00 tot 17:00';
 
         $this->assertEquals(
@@ -148,11 +148,11 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'ma 7 september 2020\n';
-        $output .= 'om 09:00\n';
-        $output .= 'di 8 september 2020\n';
-        $output .= 'van 10:00 tot 18:00\n';
-        $output .= 'wo 9 september 2020\n';
+        $output = 'ma 7 september 2020' . PHP_EOL;
+        $output .= 'om 09:00' . PHP_EOL;
+        $output .= 'di 8 september 2020' . PHP_EOL;
+        $output .= 'van 10:00 tot 18:00' . PHP_EOL;
+        $output .= 'wo 9 september 2020' . PHP_EOL;
         $output .= 'van 09:00 tot 17:00';
 
         $this->assertEquals(
@@ -171,9 +171,9 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp_list->add($timestamp2);
         $timestamp_list->add($timestamp3);
 
-        $output = 'ma 21 september 2020\n';
-        $output .= 'van 10:00 tot 18:00\n';
-        $output .= 'di 22 september 2020\n';
+        $output = 'ma 21 september 2020' . PHP_EOL;
+        $output .= 'van 10:00 tot 18:00' . PHP_EOL;
+        $output .= 'di 22 september 2020' . PHP_EOL;
         $output .= 'van 09:00 tot 17:00';
 
         $this->assertEquals(

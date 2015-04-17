@@ -102,4 +102,22 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($periodList)
         );
     }
+
+    public function testFormatsAPeriodWithoutWeekscheme()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2015-03-20',
+            '2015-03-27'
+        );
+
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $this->assertEquals(
+            '<p><time itemprop="startDate" datetime="2015-03-20"><span class="cf-date">20 maart 2015</span></time>'
+            . '<span class="cf-to cf-meta">tot</span><time itemprop="endDate" datetime="2015-03-27">'
+            . '<span class="cf-date">27 maart 2015</span></time></p>',
+            $this->formatter->format($periodList)
+        );
+    }
 }
