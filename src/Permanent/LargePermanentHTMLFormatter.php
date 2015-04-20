@@ -145,7 +145,8 @@ class LargePermanentHTMLFormatter implements PermanentFormatterInterface
         return ltrim($formatted_time, '0');
     }
 
-    protected function formatSummary($calsum) {
+    protected function formatSummary($calsum)
+    {
         $calsum = str_replace('<', ' <', $calsum);
         $calsum = str_replace('>', '> ', $calsum);
         return str_replace('  ', ' ', $calsum);

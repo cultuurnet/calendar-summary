@@ -119,7 +119,8 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
         return $output_dates;
     }
 
-    protected function formatSummary($calsum) {
+    protected function formatSummary($calsum)
+    {
         $calsum = str_replace('<', ' <', $calsum);
         $calsum = str_replace('>', '> ', $calsum);
         return str_replace('  ', ' ', $calsum);
