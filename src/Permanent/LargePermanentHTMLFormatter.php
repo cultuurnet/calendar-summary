@@ -43,7 +43,7 @@ class LargePermanentHTMLFormatter implements PermanentFormatterInterface
             $output .= $this->generateWeekscheme($permanent->getWeekScheme());
         }
 
-        return $output;
+        return $this->formatSummary($output);
     }
 
     protected function generateWeekscheme($weekscheme)
@@ -143,6 +143,12 @@ class LargePermanentHTMLFormatter implements PermanentFormatterInterface
     {
         $formatted_time = substr($time, 0, -3);
         return ltrim($formatted_time, '0');
+    }
+
+    protected function formatSummary($calsum) {
+        $calsum = str_replace('<', ' <', $calsum);
+        $calsum = str_replace('>', '> ', $calsum);
+        return str_replace('  ', ' ', $calsum);
     }
 
     protected function getEarliestTime($times)

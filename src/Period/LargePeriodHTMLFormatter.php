@@ -46,7 +46,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
             $output .= $this->generateWeekscheme($period->getWeekScheme());
         }
 
-        return $output;
+        return $this->formatSummary($output);
     }
 
 
@@ -109,7 +109,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
         $dateTo = strtotime($dateToString);
         $intlDateTo = $fmt->format($dateTo);
 
-        $output_dates = '<p>';
+        $output_dates = '<p class="cf-period">';
         $output_dates .= '<time itemprop="startDate" datetime="' . date("Y-m-d", $dateFrom) . '">';
         $output_dates .= '<span class="cf-date">' . $intlDateFrom . '</span></time>';
         $output_dates .= '<span class="cf-to cf-meta">tot</span>';
@@ -119,9 +119,15 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
         return $output_dates;
     }
 
+    protected function formatSummary($calsum) {
+        $calsum = str_replace('<', ' <', $calsum);
+        $calsum = str_replace('>', '> ', $calsum);
+        return str_replace('  ', ' ', $calsum);
+    }
+
     protected function generateWeekscheme($weekscheme)
     {
-        $output_week = '<p>Openingsuren:</p>';
+        $output_week = '<p class="cf-openinghours">Openingsuren:</p>';
         $output_week .= '<ul class="list-unstyled">';
 
         $keys = array_keys($weekscheme->getDays());

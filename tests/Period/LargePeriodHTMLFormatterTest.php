@@ -80,25 +80,26 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $periodList->add($period);
 
         $this->assertEquals(
-            '<p><time itemprop="startDate" datetime="2015-03-20"><span class="cf-date">20 maart 2015</span></time>'
-            . '<span class="cf-to cf-meta">tot</span><time itemprop="endDate" datetime="2015-03-27">'
-            . '<span class="cf-date">27 maart 2015</span></time></p><p>Openingsuren:</p>'
-            . '<ul class="list-unstyled"><meta itemprop="openingHours" datetime="Mo-Tu 9:00-20:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Maandag - dinsdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
-            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
-            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li>'
-            . '<meta itemprop="openingHours" datetime="We 9:00-17:00"></meta><li itemprop="openingHoursSpecification">'
-            . '<span class="cf-days">Woensdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="17:00" class="cf-to cf-meta">tot</span>17:00</li>'
-            . '<meta itemprop="openingHours" datetime="Fr-Sa 9:00-20:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Vrijdag - zaterdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
-            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
-            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li></ul>',
+            ' <p class="cf-period"> <time itemprop="startDate" datetime="2015-03-20"> <span class="cf-date">'
+            . ' 20 maart 2015 </span> </time> <span class="cf-to cf-meta"> tot </span> '
+            . '<time itemprop="endDate" datetime="2015-03-27"> <span class="cf-date"> 27 maart 2015 </span>'
+            . ' </time> </p> <p class="cf-openinghours"> Openingsuren: </p> <ul class="list-unstyled"> '
+            . '<meta itemprop="openingHours" datetime="Mo-Tu 9:00-20:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days"> '
+            . 'Maandag - dinsdag </span> <span itemprop="opens" content="9:00" class="cf-from cf-meta">'
+            . ' van </span> 9:00 <span itemprop="closes" content="13:00" class="cf-to cf-meta"> tot </span>'
+            . ' 13:00 <span itemprop="opens" content="17:00" class="cf-from cf-meta"> van </span>'
+            . ' 17:00 <span itemprop="closes" content="20:00" class="cf-to cf-meta"> tot </span>'
+            . ' 20:00 </li> <meta itemprop="openingHours" datetime="We 9:00-17:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days"> Woensdag </span> '
+            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta"> van </span> 9:00 '
+            . '<span itemprop="closes" content="17:00" class="cf-to cf-meta"> tot </span> 17:00 </li> '
+            . '<meta itemprop="openingHours" datetime="Fr-Sa 9:00-20:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days"> Vrijdag - zaterdag </span> '
+            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta"> van </span> 9:00 '
+            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta"> tot </span> 13:00 '
+            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta"> van </span> 17:00 '
+            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta"> tot </span> 20:00 </li> </ul> ',
             $this->formatter->format($periodList)
         );
     }
@@ -114,9 +115,10 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $periodList->add($period);
 
         $this->assertEquals(
-            '<p><time itemprop="startDate" datetime="2015-03-20"><span class="cf-date">20 maart 2015</span></time>'
-            . '<span class="cf-to cf-meta">tot</span><time itemprop="endDate" datetime="2015-03-27">'
-            . '<span class="cf-date">27 maart 2015</span></time></p>',
+            ' <p class="cf-period"> <time itemprop="startDate" datetime="2015-03-20"> <span class="cf-date"> 20 maart 2015 '
+            . '</span> </time> <span class="cf-to cf-meta"> tot </span> '
+            . '<time itemprop="endDate" datetime="2015-03-27"> <span class="cf-date"> 27 maart 2015 '
+            . '</span> </time> </p> ',
             $this->formatter->format($periodList)
         );
     }
