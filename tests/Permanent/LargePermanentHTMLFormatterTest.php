@@ -80,18 +80,18 @@ class LargePermanentHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $permanent->setWeekScheme($weekscheme);
 
         $this->assertEquals(
-            '<ul class="list-unstyled"><meta itemprop="openingHours" datetime="Mo-We 9:00-13:00">'
-            . '</meta><li itemprop="openingHoursSpecification"><span class="cf-days">'
-            . 'Maandag - woensdag</span><span itemprop="opens" content="9:00" class="cf-from cf-meta">'
-            . 'van</span>9:00<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>'
-            . '13:00</li><meta itemprop="openingHours" datetime="Fr 9:00-13:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Vrijdag</span>'
+            '<ul class="list-unstyled"> <meta itemprop="openingHours" datetime="Mo-We 9:00-13:00"> '
+            . '</meta> <li itemprop="openingHoursSpecification"> <span class="cf-days">Maandag - woensdag'
+            . '</span> <span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
+            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00</li> '
+            . '<meta itemprop="openingHours" datetime="Fr 9:00-13:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days">Vrijdag</span> '
             . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00</li>'
-            . '<meta itemprop="openingHours" datetime="Sa-Su 9:00-19:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Zaterdag - zondag</span>'
+            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00</li> '
+            . '<meta itemprop="openingHours" datetime="Sa-Su 9:00-19:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days">Zaterdag - zondag</span> '
             . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="19:00" class="cf-to cf-meta">tot</span>19:00</li></ul>',
+            . '<span itemprop="closes" content="19:00" class="cf-to cf-meta">tot</span>19:00</li> </ul>',
             $this->formatter->format($permanent)
         );
     }
@@ -146,22 +146,22 @@ class LargePermanentHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $permanent->setWeekScheme($weekscheme);
 
         $this->assertEquals(
-            '<ul class="list-unstyled"><meta itemprop="openingHours" datetime="Mo-Tu 9:00-20:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Maandag - dinsdag</span>'
+            '<ul class="list-unstyled"> <meta itemprop="openingHours" datetime="Mo-Tu 9:00-20:00"> '
+            . '</meta> <li itemprop="openingHoursSpecification"> <span class="cf-days">'
+            . 'Maandag - dinsdag</span> <span itemprop="opens" content="9:00" class="cf-from cf-meta">'
+            . 'van</span>9:00<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot'
+            . '</span>13:00<span itemprop="opens" content="17:00" class="cf-from cf-meta">van'
+            . '</span>17:00<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot'
+            . '</span>20:00</li> <meta itemprop="openingHours" datetime="We 9:00-17:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days">Woensdag</span> '
+            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
+            . '<span itemprop="closes" content="17:00" class="cf-to cf-meta">tot</span>17:00</li> '
+            . '<meta itemprop="openingHours" datetime="Fr-Sa 9:00-20:00"> </meta> '
+            . '<li itemprop="openingHoursSpecification"> <span class="cf-days">Vrijdag - zaterdag</span> '
             . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
             . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
             . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
-            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li>'
-            . '<meta itemprop="openingHours" datetime="We 9:00-17:00"></meta><li itemprop="openingHoursSpecification">'
-            . '<span class="cf-days">Woensdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="17:00" class="cf-to cf-meta">tot</span>17:00</li>'
-            . '<meta itemprop="openingHours" datetime="Fr-Sa 9:00-20:00"></meta>'
-            . '<li itemprop="openingHoursSpecification"><span class="cf-days">Vrijdag - zaterdag</span>'
-            . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span>9:00'
-            . '<span itemprop="closes" content="13:00" class="cf-to cf-meta">tot</span>13:00'
-            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">van</span>17:00'
-            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li></ul>',
+            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">tot</span>20:00</li> </ul>',
             $this->formatter->format($permanent)
         );
     }

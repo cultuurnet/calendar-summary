@@ -34,7 +34,7 @@ class MediumPeriodHTMLFormatter implements PeriodFormatterInterface
         $dateTo = strtotime($dateToString);
         $intlDateTo = $fmt->format($dateTo);
 
-        $output = '<span class="cf-from cf-meta">Van</span> <span class="cf-date">' . $intlDateFrom . '</span>';
+        $output = '<span class="cf-from cf-meta">Van</span> <span class="cf-date">' . $intlDateFrom . '</span> ';
         $output .= '<span class="cf-to cf-meta">tot</span> <span class="cf-date">'. $intlDateTo . '</span>';
 
         return $output;

@@ -236,7 +236,7 @@ class CalendarHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $periodList->add($period);
 
         $this->assertEquals(
-            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">20 maart 2015</span>'
+            '<span class="cf-from cf-meta">Van</span> <span class="cf-date">20 maart 2015</span> '
             . '<span class="cf-to cf-meta">tot</span> <span class="cf-date">27 maart 2015</span>',
             $this->formatter->format($periodList, 'md')
         );
