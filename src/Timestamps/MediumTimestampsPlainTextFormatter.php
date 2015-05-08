@@ -82,7 +82,14 @@ class MediumTimestampsPlainTextFormatter
                 }
                 $output .= $intlDate;
                 if ($i == 0) {
+                    $firstDate = $intlDate;
                     $output .= PHP_EOL . 'tot ';
+                }
+            }
+            if ($i == $timestamps_count-1) {
+                if ($firstDate == $intlDate) {
+                    $intlDateDay = $this->fmtDay->format($date);
+                    $output = $intlDateDay . ' ' . $intlDate;
                 }
             }
 

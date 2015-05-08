@@ -54,4 +54,23 @@ class MediumPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($periodList)
         );
     }
+
+    public function testFormatsAPeriodWithSameBeginAndEndDate()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2020-09-20',
+            '2020-09-20'
+        );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $output = '<span class="cf-weekday cf-meta">zondag</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">20 september 2020</span>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($periodList)
+        );
+    }
 }

@@ -85,4 +85,18 @@ class MediumTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($timestamp_list)
         );
     }
+
+    public function testFormatsMultipleTimestampsWithSameBeginAndEndDate()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp1 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00');
+        $timestamp2 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00');
+        $timestamp_list->add($timestamp1);
+        $timestamp_list->add($timestamp2);
+
+        $this->assertEquals(
+            'zondag 20 september 2020',
+            $this->formatter->format($timestamp_list)
+        );
+    }
 }

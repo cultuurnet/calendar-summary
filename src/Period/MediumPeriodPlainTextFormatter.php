@@ -25,16 +25,30 @@ class MediumPeriodPlainTextFormatter implements PeriodFormatterInterface
             'd MMMM Y'
         );
 
+        $fmtDay = new IntlDateFormatter(
+            'nl_BE',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            date_default_timezone_get(),
+            IntlDateFormatter::GREGORIAN,
+            'eeee'
+        );
+
         $period = $periodList->current();
         $dateFromString = $period->getDateFrom();
         $dateFrom = strtotime($dateFromString);
         $intlDateFrom =$fmt->format($dateFrom);
+        $intlDateFromDay = $fmtDay->format($dateFrom);
 
         $dateToString = $period->getDateTo();
         $dateTo = strtotime($dateToString);
         $intlDateTo = $fmt->format($dateTo);
 
-        $output = 'Van ' . $intlDateFrom . ' tot '. $intlDateTo;
+        if ($intlDateFrom == $intlDateTo) {
+            $output = $intlDateFromDay . ' ' . $intlDateFrom;
+        } else {
+            $output = 'Van ' . $intlDateFrom . ' tot '. $intlDateTo;
+        }
 
         return $output;
     }
