@@ -111,23 +111,48 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
 
         for ($i = 0; $i <= 6; $i++) {
             $one_day = $weekscheme->getDays()[$keys[$i]];
+            if ($i == 0) {
+                $output_week .= '(';
+            }
             if (!is_null($one_day)) {
-                if ($one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN) {
-                    $output_week .= $this->getDutchDay($keys[$i]) . ' ';
+                if ($one_day->getOpenType() == SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN) {
+                    $output_week .= strtolower($this->getDutchDay($keys[$i])) . ' ';
+                    $count = 1;
                     foreach ($one_day->getOpeningTimes() as $opening_time) {
-                        $output_week .= 'Van ' . $this->getFormattedTime($opening_time->getOpenFrom());
+                        $openingtimes = $one_day->getOpeningTimes();
+                        $count_openingtimes = count($openingtimes);
+                        $output_week .= 'van ' . $this->getFormattedTime($opening_time->getOpenFrom());
                         if (!is_null($opening_time->getOpenTill())) {
                             $output_week .= ' tot ' . $this->getFormattedTime($opening_time->getOpenTill());
                         }
-                        $output_week .= PHP_EOL;
+                        if ($i == 6) {
+                            $output_week .= ')' . PHP_EOL;
+                        } else {
+                            if ($count == $count_openingtimes) {
+                                $output_week .= ',' . PHP_EOL;
+                            } else {
+                                $output_week .= PHP_EOL;
+                            }
+
+                        }
+                        $count++;
                     }
                 }
             } elseif (!is_null($one_day) && $one_day->getOpenType()==SchemeDay::SCHEMEDAY_OPEN_TYPE_BY_APPOINTMENT) {
-                $output_week .= $this->getDutchDay($keys[$i]) . ' ';
-                $output_week .= ' op afspraak' . PHP_EOL;
+                $output_week .= strtolower($this->getDutchDay($keys[$i])) . ' ';
+                if ($i == 6) {
+                    $output_week .= ' op afspraak)';
+                } else {
+                    $output_week .= ' op afspraak,' . PHP_EOL;
+                }
             } else {
-                $output_week .= $this->getDutchDay($keys[$i]) . ' ';
-                $output_week .= ' gesloten' . PHP_EOL;
+                $output_week .= strtolower($this->getDutchDay($keys[$i])) . ' ';
+                if ($i == 6) {
+                    $output_week .= ' gesloten)';
+                } else {
+                    $output_week .= ' gesloten,' . PHP_EOL;
+                }
+
             }
         }
 

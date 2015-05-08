@@ -79,11 +79,14 @@ class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $periodList->add($period);
 
         $this->assertEquals(
-            'Van 20 maart 2015 tot 27 maart 2015'. PHP_EOL . 'Ma Van 9:00 tot 13:00'. PHP_EOL
-            . 'Van 17:00 tot 20:00' . PHP_EOL . 'Di Van 9:00 tot 13:00'. PHP_EOL
-            . 'Van 17:00 tot 20:00'. PHP_EOL . 'Wo Van 9:00 tot 17:00' . PHP_EOL . 'Do  gesloten' . PHP_EOL
-            . 'Vr Van 9:00 tot 13:00'. PHP_EOL . 'Van 17:00 tot 20:00'. PHP_EOL . 'Za Van 9:00 tot 13:00' . PHP_EOL
-            . 'Van 17:00 tot 20:00'. PHP_EOL . 'Zo  gesloten' . PHP_EOL,
+            'Van 20 maart 2015 tot 27 maart 2015'. PHP_EOL
+            . '(ma van 9:00 tot 13:00'. PHP_EOL . 'van 17:00 tot 20:00,' . PHP_EOL
+            . 'di van 9:00 tot 13:00'. PHP_EOL . 'van 17:00 tot 20:00,'. PHP_EOL
+            . 'wo van 9:00 tot 17:00,' . PHP_EOL
+            . 'do  gesloten,' . PHP_EOL
+            . 'vr van 9:00 tot 13:00'. PHP_EOL . 'van 17:00 tot 20:00,'. PHP_EOL
+            . 'za van 9:00 tot 13:00' . PHP_EOL . 'van 17:00 tot 20:00,'. PHP_EOL
+            . 'zo  gesloten)',
             $this->formatter->format($periodList)
         );
     }
