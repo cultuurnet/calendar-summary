@@ -83,7 +83,7 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             '<p class="cf-period"> <time itemprop="startDate" datetime="2015-03-20"> <span class="cf-date">'
             . '20 maart 2015</span> </time> <span class="cf-to cf-meta">tot</span> '
             . '<time itemprop="endDate" datetime="2015-03-27"> <span class="cf-date">27 maart 2015</span>'
-            . ' </time> </p> <p class="cf-openinghours">Openingsuren:</p> <ul class="list-unstyled"> '
+            . ' </time> </p> <p class="cf-openinghours">Open op:</p> <ul class="list-unstyled"> '
             . '<meta itemprop="openingHours" datetime="Mo-Tu 9:00-20:00"> </meta> '
             . '<li itemprop="openingHoursSpecification"> <span class="cf-days">'
             . 'Maandag - dinsdag</span> <span itemprop="opens" content="9:00" class="cf-from cf-meta">'

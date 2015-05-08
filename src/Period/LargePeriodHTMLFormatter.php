@@ -127,7 +127,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
 
     protected function generateWeekscheme($weekscheme)
     {
-        $output_week = '<p class="cf-openinghours">Openingsuren:</p>';
+        $output_week = '<p class="cf-openinghours">Open op:</p>';
         $output_week .= '<ul class="list-unstyled">';
 
         $keys = array_keys($weekscheme->getDays());
