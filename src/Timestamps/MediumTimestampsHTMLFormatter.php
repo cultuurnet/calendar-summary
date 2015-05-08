@@ -80,6 +80,7 @@ class MediumTimestampsHTMLFormatter implements TimestampsFormatterInterface
                 $intlDate = $this->fmt->format($date);
 
                 if ($i == 0) {
+                    $firstDate = $intlDate;
                     $output .= '<span class="cf-from cf-meta">Van</span>';
                     $output .= ' ';
                 }
@@ -88,6 +89,14 @@ class MediumTimestampsHTMLFormatter implements TimestampsFormatterInterface
                     $output .= ' ';
                     $output .= '<span class="cf-to cf-meta">tot</span>';
                     $output .= ' ';
+                }
+            }
+            if ($i == $timestamps_count-1) {
+                if ($firstDate == $intlDate) {
+                    $intlDateDay = $this->fmtDay->format($date);
+                    $output = '<span class="cf-weekday cf-meta">' . $intlDateDay . '</span>';
+                    $output .= ' ';
+                    $output .= '<span class="cf-date">' . $intlDate . '</span>';
                 }
             }
 

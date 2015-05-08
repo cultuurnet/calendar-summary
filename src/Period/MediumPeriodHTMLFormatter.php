@@ -25,17 +25,33 @@ class MediumPeriodHTMLFormatter implements PeriodFormatterInterface
             'd MMMM Y'
         );
 
+        $fmtDay = new IntlDateFormatter(
+            'nl_BE',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::FULL,
+            date_default_timezone_get(),
+            IntlDateFormatter::GREGORIAN,
+            'eeee'
+        );
+
         $period = $periodList->current();
         $dateFromString = $period->getDateFrom();
         $dateFrom = strtotime($dateFromString);
         $intlDateFrom =$fmt->format($dateFrom);
+        $intlDateFromDay = $fmtDay->format($dateFrom);
 
         $dateToString = $period->getDateTo();
         $dateTo = strtotime($dateToString);
         $intlDateTo = $fmt->format($dateTo);
 
-        $output = '<span class="cf-from cf-meta">Van</span> <span class="cf-date">' . $intlDateFrom . '</span> ';
-        $output .= '<span class="cf-to cf-meta">tot</span> <span class="cf-date">'. $intlDateTo . '</span>';
+        if ($intlDateFrom == $intlDateTo) {
+            $output = '<span class="cf-weekday cf-meta">' . $intlDateFromDay . '</span>';
+            $output .= ' ';
+            $output .= '<span class="cf-date">' . $intlDateFrom . '</span>';
+        } else {
+            $output = '<span class="cf-from cf-meta">Van</span> <span class="cf-date">' . $intlDateFrom . '</span> ';
+            $output .= '<span class="cf-to cf-meta">tot</span> <span class="cf-date">'. $intlDateTo . '</span>';
+        }
 
         return $output;
     }

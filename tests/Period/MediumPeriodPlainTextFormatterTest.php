@@ -52,4 +52,19 @@ class MediumPeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($periodList)
         );
     }
+
+    public function testFormatsAPeriodWithSameBeginAndEndDate()
+    {
+        $period = new CultureFeed_Cdb_Data_Calendar_Period(
+            '2020-09-20',
+            '2020-09-20'
+        );
+        $periodList = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $periodList->add($period);
+
+        $this->assertEquals(
+            'zondag 20 september 2020',
+            $this->formatter->format($periodList)
+        );
+    }
 }
