@@ -111,10 +111,10 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
 
         $output_dates = '<p class="cf-period">';
         $output_dates .= '<time itemprop="startDate" datetime="' . date("Y-m-d", $dateFrom) . '">';
-        $output_dates .= '<span class="cf-date">' . $intlDateFrom . '</span></time>';
+        $output_dates .= '<span class="cf-date">' . $intlDateFrom . '</span> </time>';
         $output_dates .= '<span class="cf-to cf-meta">tot</span>';
         $output_dates .= '<time itemprop="endDate" datetime="' . date("Y-m-d", $dateTo) . '">';
-        $output_dates .= '<span class="cf-date">' . $intlDateTo . '</span></time>';
+        $output_dates .= '<span class="cf-date">' . $intlDateTo . '</span> </time>';
         $output_dates .= '</p>';
         return $output_dates;
     }
@@ -183,12 +183,16 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
                             $output_week .= '<span itemprop="opens" content="'
                                 . $this->getFormattedTime($opening_time->getOpenFrom())
                                 . '" class="cf-from cf-meta">van</span>';
+                            $output_week .= '<span class="cf-time">';
                             $output_week .= $this->getFormattedTime($opening_time->getOpenFrom());
+                            $output_week .= '</span> ';
                             if (!is_null($opening_time->getOpenTill())) {
                                 $output_week .= '<span itemprop="closes" content="';
                                 $output_week .= $this->getFormattedTime($opening_time->getOpenTill());
-                                $output_week .= '" class="cf-to cf-meta">tot</span>';
+                                $output_week .= '" class="cf-to cf-meta">tot</span> ';
+                                $output_week .= '<span class="cf-time">';
                                 $output_week .= $this->getFormattedTime($opening_time->getOpenTill());
+                                $output_week .= '</span> ';
                             }
                         }
                     }
