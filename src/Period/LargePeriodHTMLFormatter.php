@@ -143,10 +143,11 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
                     $previous->getOpenType()==$one_day->getOpenType() &&
                     $previous->getOpeningTimes()==$one_day->getOpeningTimes()) {
                     $one_day_dutch = $this->getDutchDay($one_day->getDayName());
-                    $previous_dutch = ucfirst($this->getDutchDay($previous->getDayName()));
+                    $previous_dutch = $this->getDutchDay($previous->getDayName());
                     $one_day_short= $this->mapping_short_days[$one_day->getDayName()];
                     $previous_short=$this->mapping_short_days[$previous->getDayName()];
-                    if (strpos($output_week, '- ' . $previous_dutch . '</span>' !== false)) {
+
+                    if (strpos($output_week, '- ' . $previous_dutch . '</span>' != false)) {
                         $output_week = str_replace(
                             '- ' . $previous_dutch . '</span>',
                             '- ' . $one_day_dutch . '</span>',
@@ -159,13 +160,23 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
                         );
                     } else {
                         $output_week = str_replace(
-                            $previous_dutch . '</span>',
-                            $previous_dutch . ' - ' .$one_day_dutch . '</span>',
+                            ucfirst($previous_dutch) . '</span>',
+                            ucfirst($previous_dutch) . ' - ' .$one_day_dutch . '</span>',
                             $output_week
                         );
                         $output_week = str_replace(
                             'datetime="' . $previous_short . ' ',
                             'datetime="' . $previous_short . '-' . $one_day_short . ' ',
+                            $output_week
+                        );
+                        $output_week = str_replace(
+                            '- ' . $previous_dutch . '</span>',
+                            '- ' . $one_day_dutch . '</span>',
+                            $output_week
+                        );
+                        $output_week = str_replace(
+                            '-' . $previous_short . ' ',
+                            '-' . $one_day_short . ' ',
                             $output_week
                         );
                     }
@@ -189,7 +200,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
                             if (!is_null($opening_time->getOpenTill())) {
                                 $output_week .= '<span itemprop="closes" content="';
                                 $output_week .= $this->getFormattedTime($opening_time->getOpenTill());
-                                $output_week .= '" class="cf-to cf-meta">tot</span> ';
+                                $output_week .= '" class="cf-to cf-meta">tot</span>';
                                 $output_week .= '<span class="cf-time">';
                                 $output_week .= $this->getFormattedTime($opening_time->getOpenTill());
                                 $output_week .= '</span> ';
