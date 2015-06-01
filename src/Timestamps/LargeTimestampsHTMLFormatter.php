@@ -83,27 +83,36 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
         $endTime = $timestamp->getEndTime();
         $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
-        $output = '<time itemprop="startDate" datetime="' . $date . 'T' . $intlStartTime . '">';
+        if (!empty($startTime)) {
+            $output = '<time itemprop="startDate" datetime="' . $date . 'T' . $intlStartTime . '">';
+        } else {
+            $output = '<time itemprop="startDate" datetime="' . $date . $intlStartTime . '">';
+        }
         $output .= '<span class="cf-weekday cf-meta">' . $intlWeekDay . '</span>';
         $output .= ' ';
         $output .= '<span class="cf-date">' . $intlDate . '</span>';
-        $output .= ' ';
-        if (!empty($endTime)) {
-            $output .= '<span class="cf-from cf-meta">van</span>';
+
+        if (!empty($startTime)) {
             $output .= ' ';
-        } else {
-            $output .= '<span class="cf-from cf-meta">om</span>';
-            $output .= ' ';
-        }
-        $output .= '<span class="cf-time">' . $intlStartTime . '</span>';
-        $output .= '</time>';
-        if (!empty($endTime)) {
-            $output .= ' ';
-            $output .= '<span class="cf-to cf-meta">tot</span>';
-            $output .= ' ';
-            $output .= '<time itemprop="endDate" datetime="' . $date . 'T' . $intlEndTime . '">';
-            $output .= '<span class="cf-time">' . $intlEndTime . '</span>';
+            if (!empty($endTime)) {
+                $output .= '<span class="cf-from cf-meta">van</span>';
+                $output .= ' ';
+            } else {
+                $output .= '<span class="cf-from cf-meta">om</span>';
+                $output .= ' ';
+            }
+            $output .= '<span class="cf-time">' . $intlStartTime . '</span>';
             $output .= '</time>';
+            if (!empty($endTime)) {
+                $output .= ' ';
+                $output .= '<span class="cf-to cf-meta">tot</span>';
+                $output .= ' ';
+                $output .= '<time itemprop="endDate" datetime="' . $date . 'T' . $intlEndTime . '">';
+                $output .= '<span class="cf-time">' . $intlEndTime . '</span>';
+                $output .= '</time>';
+            }
+        } else {
+            $output .= ' </time>';
         }
 
         return $output;
@@ -127,27 +136,36 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
 
             if (strtotime($date) >= $today) {
                 $output .= '<li>';
-                $output .= '<time itemprop="startDate" datetime="' . $date . 'T' . $intlStartTime . '">';
+                if (!empty($startTime)) {
+                    $output .= '<time itemprop="startDate" datetime="' . $date . 'T' . $intlStartTime . '">';
+                } else {
+                    $output .= '<time itemprop="startDate" datetime="' . $date . $intlStartTime . '">';
+                }
                 $output .= '<span class="cf-weekday cf-meta">' . $intlWeekDay . '</span>';
                 $output .= ' ';
                 $output .= '<span class="cf-date">' . $intlDate . '</span>';
-                if (!empty($endTime)) {
+
+                if (!empty($startTime)) {
+                    if (!empty($endTime)) {
+                        $output .= ' ';
+                        $output .= '<span class="cf-from cf-meta">van</span>';
+                    } else {
+                        $output .= ' ';
+                        $output .= '<span class="cf-from cf-meta">om</span>';
+                    }
                     $output .= ' ';
-                    $output .= '<span class="cf-from cf-meta">van</span>';
-                } else {
-                    $output .= ' ';
-                    $output .= '<span class="cf-from cf-meta">om</span>';
-                }
-                $output .= ' ';
-                $output .= '<span class="cf-time">' . $intlStartTime . '</span>';
-                $output .= '</time>';
-                if (!empty($endTime)) {
-                    $output .= ' ';
-                    $output .= '<span class="cf-to cf-meta">tot</span>';
-                    $output .= ' ';
-                    $output .= '<time itemprop="endDate" datetime="' . $date . 'T' . $intlEndTime . '">';
-                    $output .= '<span class="cf-time">' . $intlEndTime . '</span>';
+                    $output .= '<span class="cf-time">' . $intlStartTime . '</span>';
                     $output .= '</time>';
+                    if (!empty($endTime)) {
+                        $output .= ' ';
+                        $output .= '<span class="cf-to cf-meta">tot</span>';
+                        $output .= ' ';
+                        $output .= '<time itemprop="endDate" datetime="' . $date . 'T' . $intlEndTime . '">';
+                        $output .= '<span class="cf-time">' . $intlEndTime . '</span>';
+                        $output .= '</time>';
+                    }
+                } else {
+                    $output .= ' </time>';
                 }
 
                 $output .= '</li>';
