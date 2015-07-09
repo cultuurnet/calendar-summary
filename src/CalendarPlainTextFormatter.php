@@ -42,6 +42,9 @@ class CalendarPlainTextFormatter implements CalendarFormatterInterface
             \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [
                 'lg' => new LargePermanentPlainTextFormatter(),
+                'md' => new LargePermanentPlainTextFormatter(),
+                'sm' => new LargePermanentPlainTextFormatter(),
+                'xs' => new LargePermanentPlainTextFormatter(),
             ],
         ];
     }
