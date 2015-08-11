@@ -6,20 +6,13 @@
     </fileset>
 
     <target name="test">
-        <exec command="composer validate" passthru="true" />
+        <exec command="composer validate" passthru="true" checkreturn="true"/>
         <phplint>
             <fileset refid="php"/>
         </phplint>
-        <phpunit
-                configuration="phpunit.xml.dist"
-                haltonfailure="true"
-                printsummary="true">
-            <batchtest>
-                <fileset dir="tests">
-                    <include name="**/*Test.php"/>
-                </fileset>
-            </batchtest>
-        </phpunit>
+
+        <phingcall target="unit-tests"/>
+
         <phpcodesniffer
                 standard="PSR2"
                 format="full"
@@ -27,5 +20,17 @@
                 haltonerror="true">
             <fileset refid="php"/>
         </phpcodesniffer>
+    </target>
+
+    <target name="unit-tests">
+        <exec command="./vendor/bin/phpunit"
+              checkreturn="true"
+              passthru="true"/>
+    </target>
+
+    <target name="report-to-coveralls">
+        <exec command="./vendor/bin/coveralls -v"
+              passthru="true"
+              checkreturn="true"/>
     </target>
 </project>
