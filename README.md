@@ -1,6 +1,6 @@
 # calendar-summary 
 
-[![Build Status](https://travis-ci.org/cultuurnet/calendar-summary.svg?branch=master)](https://travis-ci.org/cultuurnet/calendar-summary)
+[![Build Status](https://travis-ci.org/cultuurnet/calendar-summary.svg?branch=master)](https://travis-ci.org/cultuurnet/calendar-summary) [![Coverage Status](https://coveralls.io/repos/cultuurnet/calendar-summary/badge.svg?branch=master&service=github)](https://coveralls.io/github/cultuurnet/calendar-summary?branch=master)
 
 ## Installation
 
