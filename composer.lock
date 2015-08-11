@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f297b8e54cee93c63d70130489ead82f",
-    "packages": [],
+    "hash": "bae0f94a32d08f21a894ebd7b6c789cf",
+    "packages": [
+        {
+            "name": "cultuurnet/cdb",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cultuurnet/Cdb.git",
+                "reference": "1273c561d60a5d548260f3184312f0c7bbe81ea4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cultuurnet/Cdb/zipball/1273c561d60a5d548260f3184312f0c7bbe81ea4",
+                "reference": "1273c561d60a5d548260f3184312f0c7bbe81ea4",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.3",
+                "satooshi/php-coveralls": "~0.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CultureFeed_Cdb_": [
+                        "lib"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "PHP library for hydrating/manipulating CultuurNet's Cdb XML documents",
+            "time": "2015-05-22 08:48:28"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -1600,6 +1634,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
+        "php": ">=5.5.0",
         "ext-intl": "*"
     },
     "platform-dev": []
