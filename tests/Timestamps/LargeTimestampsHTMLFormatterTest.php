@@ -148,6 +148,27 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testFormatsASingleTimestampBeginningOfYear()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2016-01-03', '19:00:00', '23:00:00');
+        $timestamp_list->add($timestamp);
+
+        $output = '<time itemprop="startDate" datetime="2016-01-03T19:00">';
+        $output .= '<span class="cf-weekday cf-meta">zondag</span> ';
+        $output .= '<span class="cf-date">3 januari 2016</span> ';
+        $output .= '<span class="cf-from cf-meta">van</span> ';
+        $output .= '<span class="cf-time">19:00</span></time> ';
+        $output .= '<span class="cf-to cf-meta">tot</span> ';
+        $output .= '<time itemprop="endDate" datetime="2016-01-03T23:00">';
+        $output .= '<span class="cf-time">23:00</span></time>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
+
     public function testFormatsMultipleTimestampsWithStartTimeAndEndTime()
     {
         $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();

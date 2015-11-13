@@ -40,6 +40,22 @@ class MediumTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testFormatsASingleTimestampBeginningOfYear()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2016-01-03', '19:00:00', '23:00:00');
+        $timestamp_list->add($timestamp);
+
+        $output = '<span class="cf-weekday cf-meta">zondag</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">3 januari 2016</span>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
+
     public function testFormatsASingleTimestampWithoutLeadingZero()
     {
         $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
