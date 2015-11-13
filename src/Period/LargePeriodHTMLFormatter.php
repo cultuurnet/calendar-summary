@@ -99,7 +99,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
             IntlDateFormatter::GREGORIAN,
-            'd MMMM Y'
+            'd MMMM yyyy'
         );
         $dateFromString = $date_from;
         $dateFrom = strtotime($dateFromString);

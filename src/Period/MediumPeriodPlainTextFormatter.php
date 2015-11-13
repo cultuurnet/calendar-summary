@@ -22,7 +22,7 @@ class MediumPeriodPlainTextFormatter implements PeriodFormatterInterface
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
             IntlDateFormatter::GREGORIAN,
-            'd MMMM Y'
+            'd MMMM yyyy'
         );
 
         $fmtDay = new IntlDateFormatter(

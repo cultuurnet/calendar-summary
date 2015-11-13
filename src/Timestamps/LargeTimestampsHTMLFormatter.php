@@ -28,7 +28,7 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
             IntlDateFormatter::GREGORIAN,
-            'd MMMM Y'
+            'd MMMM yyyy'
         );
 
         $this->fmtWeekDayLong = new IntlDateFormatter(
