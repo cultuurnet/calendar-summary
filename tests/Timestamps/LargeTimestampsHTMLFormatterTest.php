@@ -438,4 +438,57 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($timestamp_list)
         );
     }
+
+    public function testFormatsMultipleTimestampsAtMidnight()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp1 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2015-03-26', '09:00:00', '17:00:00');
+        $timestamp2 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-21', '10:00:00', '00:00:00');
+        $timestamp3 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-22', '09:00:00', '17:00:00');
+        $timestamp_list->add($timestamp1);
+        $timestamp_list->add($timestamp2);
+        $timestamp_list->add($timestamp3);
+
+        $output = '<ul class="list-unstyled">';
+        $output .= '<li>';
+        $output .= '<time itemprop="startDate" datetime="2020-09-21T10:00">';
+        $output .= '<span class="cf-weekday cf-meta">ma</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">21 september 2020</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-from cf-meta">van</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">10:00</span>';
+        $output .= '</time>';
+        $output .= ' ';
+        $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
+        $output .= '<time itemprop="endDate" datetime="2020-09-21T00:00">';
+        $output .= '<span class="cf-time">00:00</span>';
+        $output .= '</time>';
+        $output .= '</li>';
+        $output .= '<li>';
+        $output .= '<time itemprop="startDate" datetime="2020-09-22T09:00">';
+        $output .= '<span class="cf-weekday cf-meta">di</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">22 september 2020</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-from cf-meta">van</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">09:00</span>';
+        $output .= '</time>';
+        $output .= ' ';
+        $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
+        $output .= '<time itemprop="endDate" datetime="2020-09-22T17:00">';
+        $output .= '<span class="cf-time">17:00</span>';
+        $output .= '</time>';
+        $output .= '</li>';
+        $output .= '</ul>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
 }

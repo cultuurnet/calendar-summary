@@ -142,7 +142,11 @@ class LargePermanentHTMLFormatter implements PermanentFormatterInterface
     protected function getFormattedTime($time)
     {
         $formatted_time = substr($time, 0, -3);
-        return ltrim($formatted_time, '0');
+        $formatted_short_time = ltrim($formatted_time, '0');
+        if ($formatted_short_time == ':00') {
+            $formatted_short_time = '0:00';
+        }
+        return $formatted_short_time;
     }
 
     protected function formatSummary($calsum)
