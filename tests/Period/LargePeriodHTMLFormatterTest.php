@@ -33,19 +33,28 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
         $weekscheme=new \CultureFeed_Cdb_Data_Calendar_Weekscheme();
 
-        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::MONDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::MONDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot1 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot2 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $monday->addOpeningTime($ot1);
         $monday->addOpeningTime($ot2);
 
-        $tuesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::TUESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $tuesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::TUESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot3 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot4= new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $tuesday->addOpeningTime($ot3);
         $tuesday->addOpeningTime($ot4);
 
-        $wednesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::WEDNESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $wednesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::WEDNESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot3b = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot4b = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $wednesday->addOpeningTime($ot3b);
@@ -58,7 +67,10 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $ot5 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '17:00:00');
         $thursday->addOpeningTime($ot5);
 
-        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::FRIDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::FRIDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot6 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot7 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $friday->addOpeningTime($ot6);
@@ -95,8 +107,10 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             . '<li itemprop="openingHoursSpecification"> <span class="cf-days">Maandag - woensdag</span> '
             . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span> '
             . '<span class="cf-time">9:00</span> <span itemprop="closes" content="13:00" class="cf-to cf-meta">tot'
-            . '</span> <span class="cf-time">13:00</span> <span itemprop="opens" content="17:00" class="cf-from cf-meta">'
-            . 'van</span> <span class="cf-time">17:00</span> <span itemprop="closes" content="20:00" class="cf-to cf-meta">'
+            . '</span> <span class="cf-time">13:00</span> '
+            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">'
+            . 'van</span> <span class="cf-time">17:00</span> '
+            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">'
             . 'tot</span> <span class="cf-time">20:00</span> '
             . '</li> <meta itemprop="openingHours" datetime="Th 9:00-17:00"> '
             . '</meta> <li itemprop="openingHoursSpecification"> <span class="cf-days">Donderdag</span> '
@@ -152,19 +166,28 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
         $weekscheme=new \CultureFeed_Cdb_Data_Calendar_Weekscheme();
 
-        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::MONDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::MONDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot1 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot2 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $monday->addOpeningTime($ot1);
         $monday->addOpeningTime($ot2);
 
-        $tuesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::TUESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $tuesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::TUESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot3 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot4= new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $tuesday->addOpeningTime($ot3);
         $tuesday->addOpeningTime($ot4);
 
-        $wednesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::WEDNESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $wednesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::WEDNESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot3b = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot4b = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $wednesday->addOpeningTime($ot3b);
@@ -177,7 +200,10 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $ot5 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '00:00:00');
         $thursday->addOpeningTime($ot5);
 
-        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::FRIDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::FRIDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot6 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot7 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $friday->addOpeningTime($ot6);
@@ -214,8 +240,10 @@ class LargePeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             . '<li itemprop="openingHoursSpecification"> <span class="cf-days">Maandag - woensdag</span> '
             . '<span itemprop="opens" content="9:00" class="cf-from cf-meta">van</span> '
             . '<span class="cf-time">9:00</span> <span itemprop="closes" content="13:00" class="cf-to cf-meta">tot'
-            . '</span> <span class="cf-time">13:00</span> <span itemprop="opens" content="17:00" class="cf-from cf-meta">'
-            . 'van</span> <span class="cf-time">17:00</span> <span itemprop="closes" content="20:00" class="cf-to cf-meta">'
+            . '</span> <span class="cf-time">13:00</span> '
+            . '<span itemprop="opens" content="17:00" class="cf-from cf-meta">'
+            . 'van</span> <span class="cf-time">17:00</span> '
+            . '<span itemprop="closes" content="20:00" class="cf-to cf-meta">'
             . 'tot</span> <span class="cf-time">20:00</span> '
             . '</li> <meta itemprop="openingHours" datetime="Th 9:00-0:00"> '
             . '</meta> <li itemprop="openingHoursSpecification"> <span class="cf-days">Donderdag</span> '

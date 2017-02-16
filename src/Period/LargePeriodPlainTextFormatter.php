@@ -137,7 +137,6 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
                             } else {
                                 $output_week .= PHP_EOL;
                             }
-
                         }
                         $count++;
                     }
@@ -156,7 +155,6 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
                 } else {
                     $output_week .= ' gesloten,' . PHP_EOL;
                 }
-
             }
         }
 
