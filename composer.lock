@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "91211b5a96f84340916225c51ea72507",
+    "content-hash": "6354600731309603381f17d01523b27a",
     "packages": [
         {
             "name": "cultuurnet/cdb",
@@ -2128,7 +2128,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.0",
+        "php": ">=5.6.0",
         "ext-intl": "*"
     },
     "platform-dev": []
