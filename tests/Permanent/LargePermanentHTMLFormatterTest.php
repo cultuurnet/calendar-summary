@@ -29,11 +29,17 @@ class LargePermanentHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
         $weekscheme = new \CultureFeed_Cdb_Data_Calendar_Weekscheme();
 
-        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::MONDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::MONDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot1 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $monday->addOpeningTime($ot1);
 
-        $tuesday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::TUESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $tuesday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::TUESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot2 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $tuesday->addOpeningTime($ot2);
 
@@ -51,7 +57,10 @@ class LargePermanentHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $ot4 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $thursday->addOpeningTime($ot4);
 
-        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::FRIDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::FRIDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot5 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $friday->addOpeningTime($ot5);
 
@@ -102,19 +111,28 @@ class LargePermanentHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
         $weekscheme=new \CultureFeed_Cdb_Data_Calendar_Weekscheme();
 
-        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::MONDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $monday=new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::MONDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot1 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot2 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $monday->addOpeningTime($ot1);
         $monday->addOpeningTime($ot2);
 
-        $tuesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::TUESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $tuesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::TUESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot3 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot4 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $tuesday->addOpeningTime($ot3);
         $tuesday->addOpeningTime($ot4);
 
-        $wednesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::WEDNESDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $wednesday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::WEDNESDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot3b = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot4b = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $wednesday->addOpeningTime($ot3b);
@@ -127,7 +145,10 @@ class LargePermanentHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $ot5 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '17:00:00');
         $thursday->addOpeningTime($ot5);
 
-        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(SchemeDay::FRIDAY, SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN);
+        $friday = new \CultureFeed_Cdb_Data_Calendar_SchemeDay(
+            SchemeDay::FRIDAY,
+            SchemeDay::SCHEMEDAY_OPEN_TYPE_OPEN
+        );
         $ot6 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('09:00:00', '13:00:00');
         $ot7 = new \CultureFeed_Cdb_Data_Calendar_OpeningTime('17:00:00', '20:00:00');
         $friday->addOpeningTime($ot6);
