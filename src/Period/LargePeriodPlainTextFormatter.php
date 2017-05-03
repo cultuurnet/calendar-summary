@@ -34,7 +34,7 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
         $period = $periodList->current();
         $output = $this->generateDates($period->getDateFrom(), $period->getDateTo());
         if (!is_null($period->getWeekScheme())) {
-            $output .= $this->generateWeekscheme($period->getWeekScheme());
+            $output .= PHP_EOL . $this->generateWeekscheme($period->getWeekScheme());
         }
 
         return $output;
@@ -103,7 +103,7 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
         $dateTo = strtotime($dateToString);
         $intlDateTo = $fmt->format($dateTo);
 
-        $output_dates = 'Van ' . $intlDateFrom . ' tot ' . $intlDateTo . PHP_EOL;
+        $output_dates =  'Van ' . $intlDateFrom . ' tot ' . $intlDateTo;
         return $output_dates;
     }
 

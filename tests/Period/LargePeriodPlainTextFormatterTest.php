@@ -90,4 +90,18 @@ class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($periodList)
         );
     }
+
+    public function testFormatsAPeriodListWithoutUnnecessaryLineBreak()
+    {
+        $period_list = new CultureFeed_Cdb_Data_Calendar_PeriodList();
+        $period = new CultureFeed_Cdb_Data_Calendar_Period('2020-09-20', '2020-09-21');
+        $period_list->add($period);
+
+        $expectedResult = 'Van 20 september 2020 tot 21 september 2020';
+
+        $this->assertEquals(
+            $expectedResult,
+            $this->formatter->format($period_list)
+        );
+    }
 }
