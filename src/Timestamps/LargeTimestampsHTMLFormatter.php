@@ -147,7 +147,7 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
 
             $activePeriodIndex = $seconds;
 
-            if ($activePeriodIndex > 0 ) {
+            if ($activePeriodIndex > 0) {
                 if (empty($endTime)) {
                     $timestampList->next();
                     continue;
