@@ -134,7 +134,8 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
         for ($i = 0; $i < $timestamps_count; $i++) {
             /** @var \CultureFeed_Cdb_Data_Calendar_Timestamp $timestamp */
             $timestamp = $timestampList->current();
-            $date = $endDate = $timestamp->getDate();
+            $date = $timestamp->getDate();
+            $endDate = $timestamp->getEndDate();
             $seconds = intval(substr($timestamp->getStartTime(), 6, 2));
             $endTime = $timestamp->getEndTime();
             $startTime = $timestamp->getStartTime();

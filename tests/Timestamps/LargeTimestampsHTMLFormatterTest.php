@@ -644,7 +644,7 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $output .= ' ';
         $output .= '<span class="cf-to cf-meta">tot</span>';
         $output .= ' ';
-        $output .= '<time itemprop="endDate" datetime="2017-05-25T01:00">';
+        $output .= '<time itemprop="endDate" datetime="2017-05-26T01:00">';
         $output .= '<span class="cf-time">01:00</span>';
         $output .= '</time>';
         $output .= '</li>';
