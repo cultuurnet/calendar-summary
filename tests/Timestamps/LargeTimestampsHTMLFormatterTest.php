@@ -598,4 +598,82 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($timestamp_list)
         );
     }
+
+    public function testFormatsTimestampsMixedWithPeriod()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp1 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-25', '10:00:00', '16:00:00');
+        $timestamp2 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-25', '20:00:00', '01:00:00');
+        $timestamp3 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-06-28', '10:00:01');
+        $timestamp4 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-06-29', '00:00:01');
+        $timestamp5 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-06-30', '00:00:01', '16:00:00');
+        $timestamp_list->add($timestamp1);
+        $timestamp_list->add($timestamp2);
+        $timestamp_list->add($timestamp3);
+        $timestamp_list->add($timestamp4);
+        $timestamp_list->add($timestamp5);
+
+        $output = '<ul class="list-unstyled">';
+        $output .= '<li>';
+        $output .= '<time itemprop="startDate" datetime="2017-05-25T10:00">';
+        $output .= '<span class="cf-weekday cf-meta">do</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">25 mei 2017</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-from cf-meta">van</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">10:00</span>';
+        $output .= '</time>';
+        $output .= ' ';
+        $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
+        $output .= '<time itemprop="endDate" datetime="2017-05-25T16:00">';
+        $output .= '<span class="cf-time">16:00</span>';
+        $output .= '</time>';
+        $output .= '</li>';
+        $output .= '<li>';
+        $output .= '<time itemprop="startDate" datetime="2017-05-25T20:00">';
+        $output .= '<span class="cf-weekday cf-meta">do</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">25 mei 2017</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-from cf-meta">van</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">20:00</span>';
+        $output .= '</time>';
+        $output .= ' ';
+        $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
+        $output .= '<time itemprop="endDate" datetime="2017-05-25T01:00">';
+        $output .= '<span class="cf-time">01:00</span>';
+        $output .= '</time>';
+        $output .= '</li>';
+        $output .= '<li>';
+        $output .= '<time itemprop="startDate" datetime="2017-06-28T10:00">';
+        $output .= '<span class="cf-weekday cf-meta">wo</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">28 juni 2017</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-from cf-meta">van</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">10:00</span>';
+        $output .= '</time>';
+        $output .= ' ';
+        $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
+        $output .= '<time itemprop="endDate" datetime="2017-06-30T16:00">';
+        $output .= '<span class="cf-weekday cf-meta">vr</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">30 juni 2017</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">16:00</span>';
+        $output .= '</time>';
+        $output .= '</li>';
+        $output .= '</ul>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
 }
