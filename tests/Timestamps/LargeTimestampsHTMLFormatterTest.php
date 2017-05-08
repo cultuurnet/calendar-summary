@@ -491,4 +491,44 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($timestamp_list)
         );
     }
+
+    public function testFormatsMultipleIndexedTimestampsThatMakeAPeriod()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp1 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-21', '10:00:01');
+        $timestamp2 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-22', '00:00:01');
+        $timestamp3 = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-23', '00:00:01', '16:00:00');
+        $timestamp_list->add($timestamp1);
+        $timestamp_list->add($timestamp2);
+        $timestamp_list->add($timestamp3);
+
+        $output = '<ul class="list-unstyled">';
+        $output .= '<li>';
+        $output .= '<time itemprop="startDate" datetime="2017-05-21T10:00">';
+        $output .= '<span class="cf-weekday cf-meta">zo</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">21 mei 2017</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-from cf-meta">van</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">10:00</span>';
+        $output .= '</time>';
+        $output .= ' ';
+        $output .= '<span class="cf-to cf-meta">tot</span>';
+        $output .= ' ';
+        $output .= '<time itemprop="endDate" datetime="2017-05-23T16:00">';
+        $output .= '<span class="cf-weekday cf-meta">di</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-date">23 mei 2017</span>';
+        $output .= ' ';
+        $output .= '<span class="cf-time">16:00</span>';
+        $output .= '</time>';
+        $output .= '</li>';
+        $output .= '</ul>';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
 }
