@@ -8,6 +8,8 @@
 
 namespace CultuurNet\CalendarSummary\Timestamps;
 
+use CultureFeed_Cdb_Data_Calendar_Timestamp;
+use CultureFeed_Cdb_Data_Calendar_TimestampList;
 use IntlDateFormatter;
 
 class LargeTimestampsPlainTextFormatter
@@ -60,7 +62,7 @@ class LargeTimestampsPlainTextFormatter
     }
 
     public function format(
-        \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
+        CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
     ) {
         $timestamps_count = iterator_count($timestampList);
         $timestampList->rewind();
@@ -97,34 +99,68 @@ class LargeTimestampsPlainTextFormatter
         return $output;
     }
 
-    public function formatMultipleTimestamps($timestampList, $timestamps_count)
-    {
+    public function formatMultipleTimestamps(
+        CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList,
+        $timestamps_count
+    ) {
         $today = strtotime(date('Y-m-d') . ' 00:00:00');
         $output = '';
 
+        // keep track of the active period and when the last one started, zero means none.
+        $activePeriodIndex = 0;
+        $lastPeriodStartDate = null;
+        $lastPeriodStartTime = null;
+
         for ($i = 0; $i < $timestamps_count; $i++) {
+            /** @var CultureFeed_Cdb_Data_Calendar_Timestamp $timestamp */
             $timestamp = $timestampList->current();
             $date = $timestamp->getDate();
-            $intlDate = $this->fmt->format(strtotime($date));
-            $intlWeekDay = $this->fmtWeekDayShort->format(strtotime($date));
+            $endDate = $timestamp->getEndDate();
+            $seconds = intval(substr($timestamp->getStartTime(), 6, 2));
+            $endTime = $timestamp->getEndTime();
             $startTime = $timestamp->getStartTime();
             $intlStartTime = $this->fmtTime->format(strtotime($startTime));
-            $endTime = $timestamp->getEndTime();
+
+            if ($seconds > 0 && $seconds !== $activePeriodIndex) {
+                $lastPeriodStartDate = $date;
+                $lastPeriodStartTime = $intlStartTime;
+            }
+
+            $activePeriodIndex = $seconds;
+
+            if ($activePeriodIndex > 0) {
+                if (empty($endTime)) {
+                    $timestampList->next();
+                    continue;
+                } else {
+                    $date = $lastPeriodStartDate;
+                    $intlStartTime = $lastPeriodStartTime;
+                }
+            }
+
+            $intlDate = $this->fmt->format(strtotime($date));
+            $intlWeekDay = $this->fmtWeekDayShort->format(strtotime($date));
+
+            $intlEndDate = $this->fmt->format(strtotime($endDate));
+            $intlEndWeekDay = $this->fmtWeekDayShort->format(strtotime($endDate));
             $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
             if (strtotime($date) >= $today) {
-                $output .= $intlWeekDay . ' ' . $intlDate . PHP_EOL;
-                if (!empty($endTime)) {
-                    $output .= 'van ';
+                $output = empty($output) ? $output : $output . PHP_EOL;
+                if ($activePeriodIndex === 0) {
+                    $output .= $intlWeekDay . ' ' . $intlDate . PHP_EOL;
+                    if (!empty($endTime)) {
+                        $output .= 'van ';
+                    } else {
+                        $output .= 'om ';
+                    }
+                    $output .= $intlStartTime;
+                    if (!empty($endTime)) {
+                        $output .= ' tot ' . $intlEndTime;
+                    }
                 } else {
-                    $output .= 'om ';
-                }
-                $output .= $intlStartTime;
-                if (!empty($endTime)) {
-                    $output .= ' tot ' . $intlEndTime;
-                }
-                if ($i != $timestamps_count-1) {
-                    $output .= PHP_EOL;
+                    $output .= 'Van ' . $intlWeekDay . ' ' . $intlDate . ' ' . $intlStartTime . PHP_EOL;
+                    $output .= 'tot ' . $intlEndWeekDay . ' ' . $intlEndDate . ' ' . $intlEndTime;
                 }
             }
 
