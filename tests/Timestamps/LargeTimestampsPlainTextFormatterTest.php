@@ -255,4 +255,56 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
             $this->formatter->format($timestamp_list)
         );
     }
+
+    public function testFormatsTimestampsMixedWithPeriodComplex()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-12', '10:00:01');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-13', '00:00:01');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-14', '00:00:01', '14:00:00');
+
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-20', '10:00:00', '14:00:00');
+
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-25', '10:00:02');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-26', '00:00:02');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-27', '00:00:02', '14:00:00');
+
+        foreach ($timestamps as $timestamp) {
+            $timestamp_list->add($timestamp);
+        }
+
+        $output = 'TODO';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
+
+    public function testFormatsTimestampsMixedWithPeriodComplexAndInThePast()
+    {
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-01', '10:00:01');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-02', '00:00:01');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-03', '00:00:01', '14:00:00');
+
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-20', '10:00:00', '14:00:00');
+
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-25', '10:00:02');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-26', '00:00:02');
+        $timestamps[] = new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-05-27', '00:00:02', '14:00:00');
+
+        foreach ($timestamps as $timestamp) {
+            $timestamp_list->add($timestamp);
+        }
+
+        $output = 'TODO';
+
+        $this->assertEquals(
+            $output,
+            $this->formatter->format($timestamp_list)
+        );
+    }
 }
