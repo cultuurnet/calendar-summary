@@ -61,6 +61,10 @@ class LargeTimestampsPlainTextFormatter
         );
     }
 
+    /**
+     * @param CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
+     * @return string
+     */
     public function format(
         CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
     ) {
@@ -75,8 +79,13 @@ class LargeTimestampsPlainTextFormatter
         }
     }
 
-    public function formatSingleTimestamp($timestamp)
-    {
+    /**
+     * @param CultureFeed_Cdb_Data_Calendar_Timestamp $timestamp
+     * @return string
+     */
+    private function formatSingleTimestamp(
+        CultureFeed_Cdb_Data_Calendar_Timestamp $timestamp
+    ) {
         $date = $timestamp->getDate();
         $intlDate = $this->fmt->format(strtotime($date));
         $intlWeekDay = $this->fmtWeekDayLong->format(strtotime($date));
@@ -99,7 +108,12 @@ class LargeTimestampsPlainTextFormatter
         return $output;
     }
 
-    public function formatMultipleTimestamps(
+    /**
+     * @param CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList
+     * @param int $timestamps_count
+     * @return string
+     */
+    private function formatMultipleTimestamps(
         CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList,
         $timestamps_count
     ) {
