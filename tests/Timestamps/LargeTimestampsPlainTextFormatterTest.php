@@ -14,14 +14,16 @@ use \CultureFeed_Cdb_Data_Calendar_Timestamp;
 class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var LargeTimestampsFormatter
+     * @var LargeTimestampsPlainTextFormatter
      */
     protected $formatter;
-
 
     public function setUp()
     {
         $this->formatter = new LargeTimestampsPlainTextFormatter();
+
+        // Needs to be between 2016 and 2020.
+        $this->formatter->setCurrentTimestamp(strtotime('2018-01-01'));
     }
 
     public function testFormatsATimestampWithStartTime()

@@ -12,6 +12,8 @@ use IntlDateFormatter;
 
 class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
 {
+    use CurrentTimestampTrait;
+
     private $fmt;
 
     private $fmtWeekDayLong;
@@ -136,7 +138,7 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
         \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList,
         $timestamps_count
     ) {
-        $today = strtotime(date('Y-m-d') . ' 00:00:00');
+        $today = $this->getCurrentTimestamp();
 
         $output = '<ul class="list-unstyled">';
 

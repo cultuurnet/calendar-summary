@@ -14,6 +14,8 @@ use IntlDateFormatter;
 
 class LargeTimestampsPlainTextFormatter
 {
+    use CurrentTimestampTrait;
+
     private $fmt;
 
     private $fmtWeekDayLong;
@@ -117,7 +119,7 @@ class LargeTimestampsPlainTextFormatter
         CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList,
         $timestamps_count
     ) {
-        $today = strtotime(date('Y-m-d') . ' 00:00:00');
+        $today = $this->getCurrentTimestamp();
         $output = '';
 
         // keep track of the active period and when the last one started, zero means none.
