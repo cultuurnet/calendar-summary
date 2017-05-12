@@ -14,7 +14,7 @@ use IntlDateFormatter;
 
 class LargeTimestampsPlainTextFormatter
 {
-    use showFrom;
+    use ShowFrom;
 
     private $fmt;
 
