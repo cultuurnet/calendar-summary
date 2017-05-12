@@ -12,6 +12,8 @@ use IntlDateFormatter;
 
 class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
 {
+    use ShowFrom;
+
     private $fmt;
 
     private $fmtWeekDayLong;
@@ -136,7 +138,7 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
         \CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList,
         $timestamps_count
     ) {
-        $today = strtotime(date('Y-m-d') . ' 00:00:00');
+        $showFrom = $this->getShowFrom();
 
         $output = '<ul class="list-unstyled">';
 
@@ -179,7 +181,7 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
             $intlEndWeekDay = $this->fmtWeekDayShort->format(strtotime($endDate));
             $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
-            if (strtotime($date) >= $today) {
+            if (strtotime($date) >= $showFrom) {
                 $output .= '<li>';
                 if (!empty($startTime)) {
                     $output .= '<time itemprop="startDate" datetime="' . $date . 'T' . $intlStartTime . '">';

@@ -18,10 +18,12 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
      */
     protected $formatter;
 
-
     public function setUp()
     {
         $this->formatter = new LargeTimestampsHTMLFormatter();
+
+        // Needs to be between 2016 and 2020.
+        $this->formatter->setShowFrom(strtotime('2018-01-01'));
     }
 
     public function testFormatsATimestampWithStartTime()

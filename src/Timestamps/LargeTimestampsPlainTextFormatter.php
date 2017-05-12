@@ -14,6 +14,8 @@ use IntlDateFormatter;
 
 class LargeTimestampsPlainTextFormatter
 {
+    use showFrom;
+
     private $fmt;
 
     private $fmtWeekDayLong;
@@ -117,7 +119,7 @@ class LargeTimestampsPlainTextFormatter
         CultureFeed_Cdb_Data_Calendar_TimestampList $timestampList,
         $timestamps_count
     ) {
-        $today = strtotime(date('Y-m-d') . ' 00:00:00');
+        $showFrom = $this->getShowFrom();
         $output = '';
 
         // keep track of the active period and when the last one started, zero means none.
@@ -159,7 +161,7 @@ class LargeTimestampsPlainTextFormatter
             $intlEndWeekDay = $this->fmtWeekDayShort->format(strtotime($endDate));
             $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
-            if (strtotime($date) >= $today) {
+            if (strtotime($date) >= $showFrom) {
                 $output = empty($output) ? $output : $output . PHP_EOL;
                 if ($activePeriodIndex === 0) {
                     $output .= $intlWeekDay . ' ' . $intlDate . PHP_EOL;
