@@ -2,29 +2,29 @@
 
 namespace CultuurNet\CalendarSummary\Timestamps;
 
-class CurrentTimestampTraitTest extends \PHPUnit_Framework_TestCase
+class ShowFromTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var CurrentTimestampTrait|\PHPUnit_Framework_MockObject_MockObject
+     * @var showFrom|\PHPUnit_Framework_MockObject_MockObject
      */
-    private $currentTimestampTrait;
+    private $showFrom;
 
     protected function setUp()
     {
-        $this->currentTimestampTrait = $this->getMockForTrait(
-            CurrentTimestampTrait::class
+        $this->showFrom = $this->getMockForTrait(
+            showFrom::class
         );
     }
 
-    public function testItCanSetACurrentTimestamp()
+    public function testItShowFromTimestamp()
     {
         $expectedTimestamp = strtotime('now');
 
-        $this->currentTimestampTrait->setCurrentTimestamp($expectedTimestamp);
+        $this->showFrom->setShowFrom($expectedTimestamp);
 
         $this->assertEquals(
             $expectedTimestamp,
-            $this->currentTimestampTrait->getCurrentTimestamp()
+            $this->showFrom->getShowFrom()
         );
     }
 
@@ -33,7 +33,7 @@ class CurrentTimestampTraitTest extends \PHPUnit_Framework_TestCase
         // Theoretically this could fail when run at midnight.
         $expectedTimestamp = strtotime(date('Y-m-d') . ' 00:00:00');
 
-        $timestamp = $this->currentTimestampTrait->getCurrentTimestamp();
+        $timestamp = $this->showFrom->getShowFrom();
 
         $this->assertEquals(
             $expectedTimestamp,
@@ -45,9 +45,9 @@ class CurrentTimestampTraitTest extends \PHPUnit_Framework_TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'The timestamp for the current time needs to be of type int.'
+            'The timestamp to start showing calendar info from needs to be of type int.'
         );
 
-        $this->currentTimestampTrait->setCurrentTimestamp('now');
+        $this->showFrom->setShowFrom('now');
     }
 }
