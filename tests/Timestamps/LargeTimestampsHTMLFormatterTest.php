@@ -679,7 +679,7 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testIssueIII2424()
+    public function testFormatLargeTimeStampWhichStartsInThePastAndEndsInTheFuture()
     {
         $this->formatter->setShowFrom(strtotime('2017-12-02'));
         $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
@@ -709,6 +709,34 @@ class LargeTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
         $output .= '<span class="cf-time">17:00</span>';
         $output .= '</time>';
         $output .= '</li></ul>';
+
+        $actual = $this->formatter->format($timestamp_list);
+
+        $this->assertEquals(
+            $output,
+            $actual
+        );
+    }
+
+    public function testFormatLargeTimeStampCompletelyInThePast()
+    {
+        $this->formatter->setShowFrom(strtotime('2017-12-08'));
+        $timestamp_list = new CultureFeed_Cdb_Data_Calendar_TimestampList();
+        $timestamp_list->add(new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-12-01', '08:30:01'));
+        $timestamp_list->add(new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-12-02', '00:00:01'));
+        $timestamp_list->add(new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-12-03', '00:00:01'));
+        $timestamp_list->add(new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-12-04', '00:00:01'));
+        $timestamp_list->add(new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-12-05', '00:00:01'));
+        $timestamp_list->add(new CultureFeed_Cdb_Data_Calendar_Timestamp('2017-12-06', '00:00:01'));
+        $timestamp_list->add(
+            new CultureFeed_Cdb_Data_Calendar_Timestamp(
+                '2017-12-07',
+                '00:00:01',
+                '17:00:00'
+            )
+        );
+
+        $output = '<ul class="list-unstyled"></ul>';
 
         $actual = $this->formatter->format($timestamp_list);
 
