@@ -181,7 +181,7 @@ class LargeTimestampsHTMLFormatter implements TimestampsFormatterInterface
             $intlEndWeekDay = $this->fmtWeekDayShort->format(strtotime($endDate));
             $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
-            if (strtotime($date) >= $showFrom) {
+            if (strtotime($endDate) >= $showFrom) {
                 $output .= '<li>';
                 if (!empty($startTime)) {
                     $output .= '<time itemprop="startDate" datetime="' . $date . 'T' . $intlStartTime . '">';
