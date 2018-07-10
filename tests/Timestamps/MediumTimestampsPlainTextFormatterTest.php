@@ -21,7 +21,7 @@ class MediumTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new MediumTimestampsPlainTextFormatter();
+        $this->formatter = new MediumTimestampsPlainTextFormatter('nl_BE');
     }
 
     public function testFormatsASingleTimestamp()

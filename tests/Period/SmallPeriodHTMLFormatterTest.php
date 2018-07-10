@@ -20,7 +20,7 @@ class SmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new SmallPeriodHTMLFormatter();
+        $this->formatter = new SmallPeriodHTMLFormatter('nl_BE');
     }
 
     public function testFormatsAPeriod()

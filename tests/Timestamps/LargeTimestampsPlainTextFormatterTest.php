@@ -20,7 +20,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new LargeTimestampsPlainTextFormatter();
+        $this->formatter = new LargeTimestampsPlainTextFormatter('nl_BE');
 
         // Needs to be between 2016 and 2020.
         $this->formatter->setShowFrom(strtotime('2018-01-01'));

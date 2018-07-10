@@ -21,7 +21,7 @@ class MediumTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new MediumTimestampsHTMLFormatter();
+        $this->formatter = new MediumTimestampsHTMLFormatter('nl_BE');
     }
 
     public function testFormatsASingleTimestamp()

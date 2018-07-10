@@ -13,6 +13,12 @@ use IntlDateFormatter;
 
 class LargePeriodHTMLFormatter implements PeriodFormatterInterface
 {
+    private $locale;
+
+    public function __construct($locale)
+    {
+        $this->locale = $locale;
+    }
 
     /**
      * Translate the day in Dutch.
@@ -100,7 +106,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
     protected function generateDates($date_from, $date_to)
     {
         $fmt = new IntlDateFormatter(
-            'nl_BE',
+            $this->locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),

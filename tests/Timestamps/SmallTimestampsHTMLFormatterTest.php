@@ -21,7 +21,7 @@ class SmallTimestampsHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new SmallTimestampsHTMLFormatter();
+        $this->formatter = new SmallTimestampsHTMLFormatter('nl_BE');
     }
 
     public function testFormatsATimestamp()

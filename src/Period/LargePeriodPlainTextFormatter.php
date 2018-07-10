@@ -10,9 +10,16 @@ namespace CultuurNet\CalendarSummary\Period;
 
 use \CultureFeed_Cdb_Data_Calendar_SchemeDay as SchemeDay;
 use IntlDateFormatter;
+use phpDocumentor\Reflection\Types\This;
 
 class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
 {
+    private $locale;
+
+    public function __construct($locale)
+    {
+        $this->locale = $locale;
+    }
 
     /**
      * Translate the day in short Dutch.
@@ -88,7 +95,7 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
     protected function generateDates($date_from, $date_to)
     {
         $fmt = new IntlDateFormatter(
-            'nl_BE',
+            $this->locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),

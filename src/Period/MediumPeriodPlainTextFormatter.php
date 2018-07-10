@@ -12,12 +12,18 @@ use IntlDateFormatter;
 
 class MediumPeriodPlainTextFormatter implements PeriodFormatterInterface
 {
+    private $locale;
+
+    public function __construct($locale)
+    {
+        $this->locale = $locale;
+    }
 
     public function format(
         \CultureFeed_Cdb_Data_Calendar_PeriodList $periodList
     ) {
         $fmt = new IntlDateFormatter(
-            'nl_BE',
+            $this->locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -26,7 +32,7 @@ class MediumPeriodPlainTextFormatter implements PeriodFormatterInterface
         );
 
         $fmtDay = new IntlDateFormatter(
-            'nl_BE',
+            $this->locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),

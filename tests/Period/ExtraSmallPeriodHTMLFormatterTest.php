@@ -17,7 +17,7 @@ class ExtraSmallPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new ExtraSmallPeriodHTMLFormatter();
+        $this->formatter = new ExtraSmallPeriodHTMLFormatter('nl_BE');
     }
 
     public function testFormatsAPeriod()

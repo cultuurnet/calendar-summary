@@ -19,10 +19,10 @@ class ExtraSmallPeriodPlainTextFormatter implements PeriodFormatterInterface
 
     private $fmtMonth;
 
-    public function __construct()
+    public function __construct($locale)
     {
         $this->fmtDay = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -31,7 +31,7 @@ class ExtraSmallPeriodPlainTextFormatter implements PeriodFormatterInterface
         );
 
         $this->fmtMonth = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),

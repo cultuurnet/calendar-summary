@@ -22,22 +22,22 @@ class CalendarPlainTextFormatter implements CalendarFormatterInterface
 {
     protected $mapping = array();
 
-    public function __construct()
+    public function __construct($locale = 'nl_BE')
     {
         $this->mapping = [
             \CultureFeed_Cdb_Data_Calendar_TimestampList::class =>
             [
-                'lg' => new LargeTimestampsPlainTextFormatter(),
-                'md' => new MediumTimestampsPlainTextFormatter(),
-                'sm' => new SmallTimestampsPlainTextFormatter(),
-                'xs' => new ExtraSmallTimestampsPlainTextFormatter(),
+                'lg' => new LargeTimestampsPlainTextFormatter($locale),
+                'md' => new MediumTimestampsPlainTextFormatter($locale),
+                'sm' => new SmallTimestampsPlainTextFormatter($locale),
+                'xs' => new ExtraSmallTimestampsPlainTextFormatter($locale),
             ],
             \CultureFeed_Cdb_Data_Calendar_PeriodList::class =>
             [
-                'lg' => new LargePeriodPlainTextFormatter(),
-                'md' => new MediumPeriodPlainTextFormatter(),
-                'sm' => new SmallPeriodPlainTextFormatter(),
-                'xs' => new ExtraSmallPeriodPlainTextFormatter(),
+                'lg' => new LargePeriodPlainTextFormatter($locale),
+                'md' => new MediumPeriodPlainTextFormatter($locale),
+                'sm' => new SmallPeriodPlainTextFormatter($locale),
+                'xs' => new ExtraSmallPeriodPlainTextFormatter($locale),
             ],
             \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [

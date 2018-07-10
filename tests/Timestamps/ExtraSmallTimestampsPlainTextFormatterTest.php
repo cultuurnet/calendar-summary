@@ -21,7 +21,7 @@ class ExtraSmallTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_Test
 
     public function setUp()
     {
-        $this->formatter = new ExtraSmallTimestampsPlainTextFormatter();
+        $this->formatter = new ExtraSmallTimestampsPlainTextFormatter('nl_BE');
     }
 
     public function testFormatsATimestamp()

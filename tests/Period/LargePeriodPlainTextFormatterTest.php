@@ -21,7 +21,7 @@ class LargePeriodPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new LargePeriodPlainTextFormatter();
+        $this->formatter = new LargePeriodPlainTextFormatter('nl_BE');
     }
 
     public function testFormatsAPeriod()

@@ -16,10 +16,10 @@ class MediumTimestampsPlainTextFormatter
 
     private $fmtDay;
 
-    public function __construct()
+    public function __construct($locale)
     {
         $this->fmt = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -28,7 +28,7 @@ class MediumTimestampsPlainTextFormatter
         );
 
         $this->fmtDay = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),

@@ -17,10 +17,10 @@ class ExtraSmallTimestampsHTMLFormatter implements TimestampsFormatterInterface
 
     private $fmtMonth;
 
-    public function __construct()
+    public function __construct($locale)
     {
         $this->fmtDay = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -29,7 +29,7 @@ class ExtraSmallTimestampsHTMLFormatter implements TimestampsFormatterInterface
         );
 
         $this->fmtMonth = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),

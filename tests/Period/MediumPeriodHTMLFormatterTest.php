@@ -20,7 +20,7 @@ class MediumPeriodHTMLFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->formatter = new MediumPeriodHTMLFormatter();
+        $this->formatter = new MediumPeriodHTMLFormatter('nl_BE');
     }
 
     public function testFormatsAPeriod()

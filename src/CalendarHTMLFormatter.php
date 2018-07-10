@@ -22,22 +22,22 @@ class CalendarHTMLFormatter implements CalendarFormatterInterface
 {
     protected $mapping = array();
 
-    public function __construct()
+    public function __construct($locale = 'nl_BE')
     {
         $this->mapping = [
             \CultureFeed_Cdb_Data_Calendar_TimestampList::class =>
             [
-                'lg' => new LargeTimestampsHTMLFormatter(),
-                'md' => new MediumTimestampsHTMLFormatter(),
-                'sm' => new SmallTimestampsHTMLFormatter(),
-                'xs' => new ExtraSmallTimestampsHTMLFormatter(),
+                'lg' => new LargeTimestampsHTMLFormatter($locale),
+                'md' => new MediumTimestampsHTMLFormatter($locale),
+                'sm' => new SmallTimestampsHTMLFormatter($locale),
+                'xs' => new ExtraSmallTimestampsHTMLFormatter($locale),
             ],
             \CultureFeed_Cdb_Data_Calendar_PeriodList::class =>
             [
-                'lg' => new LargePeriodHTMLFormatter(),
-                'md' => new MediumPeriodHTMLFormatter(),
-                'sm' => new SmallPeriodHTMLFormatter(),
-                'xs' => new ExtraSmallPeriodHTMLFormatter(),
+                'lg' => new LargePeriodHTMLFormatter($locale),
+                'md' => new MediumPeriodHTMLFormatter($locale),
+                'sm' => new SmallPeriodHTMLFormatter($locale),
+                'xs' => new ExtraSmallPeriodHTMLFormatter($locale),
             ],
             \CultureFeed_Cdb_Data_Calendar_Permanent::class =>
             [

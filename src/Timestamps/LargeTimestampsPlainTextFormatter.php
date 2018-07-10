@@ -24,10 +24,10 @@ class LargeTimestampsPlainTextFormatter
 
     private $fmtTime;
 
-    public function __construct()
+    public function __construct($locale)
     {
         $this->fmt = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -36,7 +36,7 @@ class LargeTimestampsPlainTextFormatter
         );
 
         $this->fmtWeekDayLong = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -45,7 +45,7 @@ class LargeTimestampsPlainTextFormatter
         );
 
         $this->fmtWeekDayShort = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
@@ -54,7 +54,7 @@ class LargeTimestampsPlainTextFormatter
         );
 
         $this->fmtTime = new IntlDateFormatter(
-            'nl_BE',
+            $locale,
             IntlDateFormatter::FULL,
             IntlDateFormatter::FULL,
             date_default_timezone_get(),
