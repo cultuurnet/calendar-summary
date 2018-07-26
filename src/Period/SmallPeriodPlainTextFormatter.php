@@ -19,7 +19,7 @@ class SmallPeriodPlainTextFormatter implements PeriodFormatterInterface
 
     private $fmtMonth;
 
-    public function __construct($locale)
+    public function __construct($locale = 'nl_BE')
     {
         $this->fmtDay = new IntlDateFormatter(
             $locale,

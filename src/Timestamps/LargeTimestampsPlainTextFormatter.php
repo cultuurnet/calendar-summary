@@ -24,7 +24,7 @@ class LargeTimestampsPlainTextFormatter
 
     private $fmtTime;
 
-    public function __construct($locale)
+    public function __construct($locale = 'nl_BE')
     {
         $this->fmt = new IntlDateFormatter(
             $locale,

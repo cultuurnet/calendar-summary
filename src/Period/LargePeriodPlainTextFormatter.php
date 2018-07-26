@@ -16,7 +16,7 @@ class LargePeriodPlainTextFormatter implements PeriodFormatterInterface
 {
     private $locale;
 
-    public function __construct($locale)
+    public function __construct($locale = 'nl_BE')
     {
         $this->locale = $locale;
     }
