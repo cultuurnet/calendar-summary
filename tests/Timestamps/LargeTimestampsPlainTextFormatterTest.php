@@ -32,7 +32,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00');
         $timestamp_list->add($timestamp);
 
-        $output = 'zondag 20 september 2020' . PHP_EOL;
+        $output = 'zondag 20 september 2020 ' . PHP_EOL;
         $output .= 'om 09:00';
 
         $this->assertEquals(
@@ -47,7 +47,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-09', '09:00:00');
         $timestamp_list->add($timestamp);
 
-        $output = 'woensdag 9 september 2020' . PHP_EOL;
+        $output = 'woensdag 9 september 2020 ' . PHP_EOL;
         $output .= 'om 09:00';
 
         $this->assertEquals(
@@ -62,7 +62,7 @@ class LargeTimestampsPlainTextFormatterTest extends \PHPUnit_Framework_TestCase
         $timestamp = new CultureFeed_Cdb_Data_Calendar_Timestamp('2020-09-20', '09:00:00', '12:30:00');
         $timestamp_list->add($timestamp);
 
-        $output = 'zondag 20 september 2020' . PHP_EOL;
+        $output = 'zondag 20 september 2020 ' . PHP_EOL;
         $output .= 'van 09:00 tot 12:30';
 
         $this->assertEquals(
