@@ -96,7 +96,7 @@ class LargeTimestampsPlainTextFormatter
         $endTime = $timestamp->getEndTime();
         $intlEndTime = $this->fmtTime->format(strtotime($endTime));
 
-        $output = $intlWeekDay . ' ' . $intlDate . PHP_EOL;
+        $output = $intlWeekDay . ' ' . $intlDate . ' ' . PHP_EOL;
         if (!empty($endTime)) {
             $output .= 'van ';
         } else {
