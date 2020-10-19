@@ -153,7 +153,7 @@ class LargePeriodHTMLFormatter implements PeriodFormatterInterface
                     $one_day_short= $this->mapping_short_days[$one_day->getDayName()];
                     $previous_short=$this->mapping_short_days[$previous->getDayName()];
 
-                    if (strpos($output_week, '- ' . $previous_dutch . '</span>' != false)) {
+                    if (strpos($output_week, '- ' . $previous_dutch . '</span>') != false) {
                         $output_week = str_replace(
                             '- ' . $previous_dutch . '</span>',
                             '- ' . $one_day_dutch . '</span>',
