@@ -11,4 +11,4 @@ notifications:
    recipients:
    - nicolas.leroy@gmail.com
 notifications:
-  slack: cnet:UzmZZjVck1RNHTyrTSe6NTd9
+  slack: '<account>:<token>'
